@@ -16,6 +16,11 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
+Route.group(()=>{
+Route.get('usersList','UserController.index');
+Route.post('login','UserController.login');
+Route.post('usersCreate','UserController.store');
+Route.put(`usersUpdate/:id`,'UserController.update');
+Route.delete('usersDelete/:id','UserController.usersDelete');
+
+}).prefix('api/v1');
