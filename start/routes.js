@@ -26,4 +26,5 @@ Route.post('password','UserController.jwtpassword');
 Route.post('users','UserController.createUser');
 Route.get('searchName/:name','UserController.searchName');
 Route.get('searchPhone/:phone','UserController.searchPhone');
+Route.get('searchID/:id','UserController.searchId');
 }).prefix('api/v1');

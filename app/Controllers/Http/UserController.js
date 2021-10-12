@@ -1,22 +1,40 @@
 'use strict'
 
 const User = use('App/Models/User');
-const Hash = use('Hash')
+const Role = use('App/Models/Role');
+
 
 class UserController {
     async index({ auth, response }) {
         try {
             const jwt = await auth.getUser();
-            const rows = await User.all();
-
+             let rows = await User.all();
+       
+        
             (jwt.$attributes.role_id === 1)
                 ? response.status(200).json({ success: true, users: rows, message: `Lista de usuarios`, code: 200 })
                 : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
         } catch (error) {
-            return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
+            console.log(error);
+            // return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
         }
 
     }
+    // async searchId({ auth, params, request}){
+    // try {
+    //     const jwt = await auth.getUser()
+    //     if (jwt.$attributes.role_id === 1) {
+    //         const user = await User.find(params.id) //Buscar usuario con id = 1
+    //         const role = await user.hasRole().fetch() //Leer perfil
+    //         console.log(role);
+    //     } else {
+    //         console.log('nada');
+    //     }
+
+    // } catch (error) {
+    //     console.log(error);
+    // }
+    // }
     async store({ auth, response, request }) {
         try {
             const user = await new User();
