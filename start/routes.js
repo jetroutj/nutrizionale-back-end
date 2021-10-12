@@ -22,5 +22,8 @@ Route.post('login','UserController.login');
 Route.post('usersCreate','UserController.store');
 Route.put(`usersUpdate/:id`,'UserController.update');
 Route.delete('usersDelete/:id','UserController.usersDelete');
-
+Route.post('password','UserController.jwtpassword');
+Route.post('users','UserController.createUser');
+Route.get('searchName/:name','UserController.searchName');
+Route.get('searchPhone/:phone','UserController.searchPhone');
 }).prefix('api/v1');

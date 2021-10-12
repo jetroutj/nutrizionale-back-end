@@ -15,7 +15,7 @@ class ConsultingRoomSchema extends Schema {
       table.string('name',50)
       table.string('address',50)
       table.string('phone',15)
-      table.string('email',100)
+      table.string('email', 254).notNullable().unique();
       table.timestamps()
     })
   }

@@ -15,8 +15,8 @@ class User extends Model {
     })
   
   }
-  Users(){
-      
+  tokens () {
+    return this.hasMany('App/Models/Token')
   }
 }
 
