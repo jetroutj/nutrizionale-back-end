@@ -27,7 +27,9 @@ class UserSeeder {
         password:"Admin",
         rfc:"",
         status_user_id:1,
-        role_id: 1
+        role_id: 1,
+        appoiment_id:0,
+        consulting_room_id:1
       },
       {
         name:"Jetro Daniel",
@@ -39,7 +41,9 @@ class UserSeeder {
         password:"Jetro",
         rfc:"",
         status_user_id:1,
-        role_id: 2
+        role_id: 2,
+        appoiment_id:1,
+        consulting_room_id:1
       },
       {
         name:"Alejandra",
@@ -51,7 +55,9 @@ class UserSeeder {
         password:"Ale123",
         rfc:"",
         status_user_id:1,
-        role_id: 2
+        role_id: 2,
+        appoiment_id:2,
+        consulting_room_id:1
       },
       {
         name:"Josstin",
@@ -63,7 +69,9 @@ class UserSeeder {
         password:"Joss123",
         rfc:"",
         status_user_id:1,
-        role_id: 2
+        role_id: 2,
+        appoiment_id:3,
+        consulting_room_id:1
       },
       {
         name:"Emma",
@@ -75,19 +83,9 @@ class UserSeeder {
         password:"emma123",
         rfc:"",
         status_user_id:1,
-        role_id: 2
-      },
-      {
-        name:"",
-        lastname:"",
-        username:"",
-        email:"",
-        phone:"",
-        address:"",
-        password:"",
-        rfc:"",
-        status_user_id:1,
-        role_id: 2
+        role_id: 2,
+        appoiment_id:4,
+        consulting_room_id:1
       }
     ])
   }

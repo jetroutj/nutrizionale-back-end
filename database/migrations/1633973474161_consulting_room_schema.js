@@ -7,11 +7,11 @@ class ConsultingRoomSchema extends Schema {
   up () {
     this.create('consulting_rooms', (table) => {
       table.increments('id').primary()
-      table.integer('user_id')
-      table.integer('product_id');
-      table.integer('status_user_id');
-      table.integer('role_id')
-      table.integer('appoiment_id');
+      // table.integer('user_id')
+      // table.integer('product_id');
+      // table.integer('status_user_id');
+      // table.integer('role_id')
+      // table.integer('appoiment_id');
       table.string('name',50)
       table.string('address',50)
       table.string('phone',15)

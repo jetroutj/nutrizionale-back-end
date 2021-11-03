@@ -27,4 +27,16 @@ Route.post('users','UserController.createUser');
 Route.get('searchName/:name','UserController.searchName');
 Route.get('searchPhone/:phone','UserController.searchPhone');
 Route.get('searchID/:id','UserController.searchId');
+
+Route.get('productList','ProductController.index')
+Route.post('productCreate','ProductController.store')
+Route.put('productUpdate/:id','ProductController.update')
+Route.delete('productDel/:id','ProductController.delete')
+
+Route.get('dietList','DietController.index')
+Route.post('dietCreate','DietController.store')
+Route.put('dietUpdate','DietController.update')
+Route.delete('dietDel','DietController.delete')
+
+//Route.get('','')
 }).prefix('api/v1');

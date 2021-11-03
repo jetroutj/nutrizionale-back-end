@@ -12,9 +12,21 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
-
+const Diet = use('App/Models/Diet');
 class DietSeeder {
   async run () {
+    await Diet.createMany([
+      {
+        disease:"",
+        weight:"",
+        size:"",
+        age:"",
+        allergy:"",
+        plan:"",
+        user_id:1,
+        
+      }
+    ])
   }
 }
 

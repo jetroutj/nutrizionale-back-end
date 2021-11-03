@@ -12,9 +12,16 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
+const Appointement = use('App/Models/Appointement')
 
 class AppointementSeeder {
   async run () {
+    await Appointement.createMany([
+      {
+        motive:"",
+        
+      }
+    ])
   }
 }
 
