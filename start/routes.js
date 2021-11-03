@@ -16,6 +16,27 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
+Route.group(()=>{
+Route.get('usersList','UserController.index');
+Route.post('login','UserController.login');
+Route.post('usersCreate','UserController.store');
+Route.put(`usersUpdate/:id`,'UserController.update');
+Route.delete('usersDelete/:id','UserController.usersDelete');
+Route.post('password','UserController.jwtpassword');
+Route.post('users','UserController.createUser');
+Route.get('searchName/:name','UserController.searchName');
+Route.get('searchPhone/:phone','UserController.searchPhone');
+Route.get('searchID/:id','UserController.searchId');
+
+Route.get('productList','ProductController.index')
+Route.post('productCreate','ProductController.store')
+Route.put('productUpdate/:id','ProductController.update')
+Route.delete('productDel/:id','ProductController.delete')
+
+Route.get('dietList','DietController.index')
+Route.post('dietCreate','DietController.store')
+Route.put('dietUpdate','DietController.update')
+Route.delete('dietDel','DietController.delete')
+
+//Route.get('','')
+}).prefix('api/v1');
