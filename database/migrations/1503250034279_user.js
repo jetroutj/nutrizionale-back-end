@@ -12,7 +12,7 @@ class UserSchema extends Schema {
       table.integer('appoiment_id');
       table.integer('consulting_room_id');
       table.string('name',50);
-      table.string('email', 254).notNullable().unique();
+      table.string('email', 254).unique();
       table.string('lastname',50)
       table.string('username',50)
       table.string('phone',50)

@@ -12,17 +12,21 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
-const Appointement = use('App/Models/Appointement')
+const Appoinmnet = use('App/Models/Appoinmnet')
 
-class AppointementSeeder {
+class AppoinmnetSeeder {
   async run () {
-    await Appointement.createMany([
+    await Appoinmnet.createMany([
       {
-        motive:"",
+        user_id:1,
+        consulting_room_id:1,
+        motive:"Gordo",
+        date:"2021-11-03 11:36:52",
+        schedule:"tarde"
         
       }
     ])
   }
 }
 
-module.exports = AppointementSeeder
+module.exports = AppoinmnetSeeder

@@ -4,6 +4,8 @@
 const Model = use('Model')
 
 class Diet extends Model {
+
+
 }
 
 module.exports = Diet
