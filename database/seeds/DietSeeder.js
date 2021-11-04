@@ -17,13 +17,13 @@ class DietSeeder {
   async run () {
     await Diet.createMany([
       {
-        disease:"",
-        weight:"",
-        size:"",
-        age:"",
-        allergy:"",
-        plan:"",
-        user_id:1,
+        disease:"Ninguna",
+        weight:"20",
+        size:"50",
+        age:"25",
+        allergy:"No",
+        plan:"l;askdf;ka;'slkf;lkd;skf;kas;ldk;'fa'dskdl;fas'",
+        user_id:2
         
       }
     ])

@@ -9,7 +9,7 @@ class AppoinmnetsSchema extends Schema {
       table.increments('id').primary()
       table.integer('user_id')
       table.integer('consulting_room_id');
-      table.string('motive',200)
+      table.string('motive',500)
       table.date('date')
       table.string('schedule')
       table.timestamps()
