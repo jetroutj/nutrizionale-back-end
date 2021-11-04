@@ -8,33 +8,22 @@ class UserController {
     async index({ auth, response }) {
         try {
             const jwt = await auth.getUser();
-             let rows = await User.all();
-       
-        
+            const {rows: users} = await User.all();
+            let rolesUser = []
+
+             for (let user of users) {
+                const role = await user.hasRole().fetch()
+                rolesUser.push(role)
+                console.log(role);
+              }
             (jwt.$attributes.role_id === 1)
-                ? response.status(200).json({ success: true, users: rows, message: `Lista de usuarios`, code: 200 })
+                ? response.status(200).json({ success: true, users: {users,rolesUser}, message: `Lista de usuarios`, code: 200 })
                 : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
         } catch (error) {
             console.log(error);
             // return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
         }
-
     }
-    // async searchId({ auth, params, request}){
-    // try {
-    //     const jwt = await auth.getUser()
-    //     if (jwt.$attributes.role_id === 1) {
-    //         const user = await User.find(params.id) //Buscar usuario con id = 1
-    //         const role = await user.hasRole().fetch() //Leer perfil
-    //         console.log(role);
-    //     } else {
-    //         console.log('nada');
-    //     }
-
-    // } catch (error) {
-    //     console.log(error);
-    // }
-    // }
     async store({ auth, response, request }) {
         try {
             const user = await new User();
@@ -190,8 +179,9 @@ class UserController {
 
                     if (i.$attributes.name.match(params.name)) {
                         const clients = i.$attributes;
-                        console.log(clients);
+                        // console.log(clients);
                         items.user.push({
+                            "id":clients.id,
                             "username": clients.username,
                             "name": clients.name,
                             "lastname": clients.lastname,
@@ -204,6 +194,7 @@ class UserController {
 
                     }
                 }
+
                 return response.status(200).json({ success: true, result: items, message: `Usuario encontrado`, code: 200 });
 
             } else {
@@ -243,6 +234,84 @@ class UserController {
                     }
                 }
                 return response.status(200).json({ success: true, result: items, message: `Usuario encontrado`, code: 200 });
+
+            } else {
+                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async userAppoiment({params,auth, response}){
+        try {
+            const jwt = await auth.getUser()
+            const rows = await User.all();
+            const array = rows.rows
+            let items = []
+
+            if (jwt.$attributes.role_id === 1) {
+                for (const i of array) {
+                    const appoiment = await i.hasAppoiment().fetch();
+                    if (i.$attributes.name.match(params.name)) {
+                        const clients = i.$attributes;
+                        console.log(clients);
+                        items.push({
+                            "id":clients.id,
+                            "username": clients.username,
+                            "name": clients.name,
+                            "lastname": clients.lastname,
+                            "phone": clients.phone,
+                            "email": clients.email,
+                            "address": clients.address,
+                            "nss": clients.nss,
+                            "rfc": clients.rfc,
+                            "appoiment_id":clients.appoiment_id,
+                            appoiment
+                        })
+
+                    }
+                }
+                return response.status(200).json({ success: true, users: items, message: `Usuario encontrado`, code: 200 });
+
+            } else {
+                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async userDiet({params,auth, response}){
+        try {
+            const jwt = await auth.getUser()
+            const rows = await User.all();
+            const array = rows.rows
+            let items = []
+
+            if (jwt.$attributes.role_id === 1) {
+                for (const i of array) {
+                    const diet = await i.hasDiet().fetch();
+                    if (i.$attributes.name.match(params.name)) {
+                        const clients = i.$attributes;
+                        console.log(clients);
+                        items.push({
+                            "id":clients.id,
+                            "username": clients.username,
+                            "name": clients.name,
+                            "lastname": clients.lastname,
+                            "phone": clients.phone,
+                            "email": clients.email,
+                            "address": clients.address,
+                            "nss": clients.nss,
+                            "rfc": clients.rfc,
+                            "appoiment_id":clients.appoiment_id,
+                            diet
+                        })
+
+                    }
+                }
+                return response.status(200).json({ success: true, users: items, message: `Usuario encontrado`, code: 200 });
 
             } else {
                 return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });

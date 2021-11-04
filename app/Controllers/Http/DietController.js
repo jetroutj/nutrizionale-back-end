@@ -1,7 +1,7 @@
 'use strict'
 
 const Diet = use('App/Models/Diet');
-
+const User = use('App/Models/User');
 class DietController {
 
     async index ({auth, response}){
@@ -22,36 +22,34 @@ class DietController {
         try {
             const diet = await new Diet();
             const jwt = await auth.getUser();
-
+            
             const {
-                diseases,
+                disease,
                 weight,
                 size,
                 age,
                 allergy,
                 plan,
-                user_id,
-                status_user_id,
-                role_id,
-                appoiments_id
+                user_id
             } = request.all();
 
             if (jwt.$attributes.role_id === 1) {
-                diet.diseases = diseases,
+                diet.disease = disease,
                 diet.weight = weight,
                 diet.size = size,
                 diet.age = age,
                 diet.allergy = allergy,
                 diet.plan = plan,
-                diet.user_id = user_id,
-                diet.status_user_id = status_user_id,
-                diet.role_id = role_id,
-                diet.appoiments_id = appoiments_id
+                diet.user_id = user_id
 
                 await diet.save()
+                const updateId = await User.findOrFail(user_id)
+                updateId.diet_id = user_id
+                await updateId.save()
                 return response.status(201).json({ success: true, result: diet, message: `Dieta creada correctamente`, code: 201 });
 
             }
+            
         } catch (error) {
          console.log(error);   
         }

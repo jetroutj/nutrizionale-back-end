@@ -9,6 +9,7 @@ class UserSchema extends Schema {
       table.increments('id').primary()
       table.integer('status_user_id')
       table.integer('role_id');
+      table.integer('diet_id');
       table.integer('appoiment_id');
       table.integer('consulting_room_id');
       table.string('name',50);

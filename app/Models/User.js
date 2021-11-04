@@ -19,13 +19,16 @@ class User extends Model {
     return this.hasMany('App/Models/Token')
   }
   hasRole(){
-    return this.hasOne('App/Models/Role','id')
+    return this.belongsTo('App/Models/Role','role_id', 'id')
   }
   hasstatus(){
     return this.hasOne('App/Models/StatusUser')
   }
   hasAppoiment(){
-    return this.hasMany('App/Models/Appointement')
+    return this.belongsTo('App/Models/Appoinmnet','appoiment_id','id')
+  }
+  hasDiet(){
+    return this.belongsTo('App/Models/Diet','diet_id','id')
   }
   
 }

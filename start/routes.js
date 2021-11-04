@@ -27,6 +27,8 @@ Route.post('users','UserController.createUser');
 Route.get('searchName/:name','UserController.searchName');
 Route.get('searchPhone/:phone','UserController.searchPhone');
 Route.get('searchID/:id','UserController.searchId');
+Route.get('userAppoiment/:name','UserController.userAppoiment');
+Route.get('userDiet/:name','UserController.userDiet');
 
 Route.get('productList','ProductController.index')
 Route.post('productCreate','ProductController.store')
@@ -37,6 +39,11 @@ Route.get('dietList','DietController.index')
 Route.post('dietCreate','DietController.store')
 Route.put('dietUpdate','DietController.update')
 Route.delete('dietDel','DietController.delete')
+
+Route.get('AppoinmnetList','AppoinmnetController.index')
+Route.post('AppoinmnetCreate','AppoinmnetController.store')
+Route.put('AppoinmnetUpdate','AppoinmnetController.update')
+Route.delete('AppoinmnetDel','AppoinmnetController.delete')
 
 //Route.get('','')
 }).prefix('api/v1');

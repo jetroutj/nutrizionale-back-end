@@ -11,7 +11,7 @@ class DietSchema extends Schema {
       // table.integer('product_id');
       // table.integer('status_user_id');
       // table.integer('role_id');
-      table.integer('appoiment_id');
+      // table.integer('appoiment_id');
       table.string('disease',300);
       table.string('weight',50);
       table.string('size',50);

@@ -28,6 +28,7 @@ class UserSeeder {
         rfc:"",
         status_user_id:1,
         role_id: 1,
+        diet_id: 0,
         appoiment_id:0,
         consulting_room_id:1
       },
@@ -42,6 +43,7 @@ class UserSeeder {
         rfc:"",
         status_user_id:1,
         role_id: 2,
+        diet_id: 1,
         appoiment_id:1,
         consulting_room_id:1
       },
@@ -56,6 +58,7 @@ class UserSeeder {
         rfc:"",
         status_user_id:1,
         role_id: 2,
+        diet_id: 2,
         appoiment_id:2,
         consulting_room_id:1
       },
@@ -70,6 +73,7 @@ class UserSeeder {
         rfc:"",
         status_user_id:1,
         role_id: 2,
+        diet_id: 3,
         appoiment_id:3,
         consulting_room_id:1
       },
@@ -84,6 +88,7 @@ class UserSeeder {
         rfc:"",
         status_user_id:1,
         role_id: 2,
+        diet_id: 4,
         appoiment_id:4,
         consulting_room_id:1
       }

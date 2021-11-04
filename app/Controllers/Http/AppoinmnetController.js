@@ -1,13 +1,14 @@
 'use strict'
 
-const Appoiment = use('App/Models/Appoiment');
+const Appoinmnet = use('App/Models/Appoinmnet');
+const User = use('App/Models/User');
 
-class AppoimentController {
+class AppoinmnetController {
 
     async index ({auth, response}){
         try {
             const jwt = await auth.getUser();
-             let rows = await Appoiment.all();
+             let rows = await Appoinmnet.all();
        
         
             (jwt.$attributes.role_id === 1)
@@ -20,22 +21,27 @@ class AppoimentController {
     }
     async store ({request, auth, response}){
         try {
-            const appoiment = await new Appoiment();
+            const appoiment = await new Appoinmnet();
             const jwt = await auth.getUser();
 
             const {
+                user_id,
                 motive,
                 date,
                 schedule
             } = request.all();
 
             if (jwt.$attributes.role_id === 1) {
-
+                appoiment.user_id = user_id
                 appoiment.motive = motive
                 appoiment.date = date
                 appoiment.schedule = schedule
 
                 await appoiment.save()
+                
+                const updateId = await User.findOrFail(user_id)
+                updateId.appoiment_id = user_id
+                await updateId.save()
                 return response.status(201).json({ success: true, result: appoiment, message: `Cita creada correctamente`, code: 201 });
 
             }
@@ -46,7 +52,7 @@ class AppoimentController {
 
     async update ({request, params, auth, response}){
         try {
-            const appoiment = await Appoiment.findOrFail(params.id)
+            const appoiment = await Appoinmnet.findOrFail(params.id)
             const jwt = await auth.getUser();
 
             const {
@@ -69,7 +75,7 @@ class AppoimentController {
         try {
             const jwt = await auth.getUser()
             if (jwt.$attributes.role_id === 1) {
-                const appoiment = await Appoiment.findOrFail(params.id)
+                const appoiment = await Appoinmnet.findOrFail(params.id)
                 await appoiment.delete();
                 return response.status(200).json({ success: true, message: 'Dieta eliminada correctamente', code: 200 });
             } else {
@@ -82,4 +88,4 @@ class AppoimentController {
 
 }
 
-module.exports = AppoimentController
+module.exports = AppoinmnetController
