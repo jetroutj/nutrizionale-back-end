@@ -8,17 +8,41 @@ class UserController {
     async index({ auth, response }) {
         try {
             const jwt = await auth.getUser();
-            const {rows: users} = await User.all();
-            let rolesUser = []
+            const rows = await User.all();
+            const array = rows.rows
+            let appoimentUser = []
 
-             for (let user of users) {
-                const role = await user.hasRole().fetch()
-                rolesUser.push(role)
-                console.log(role);
-              }
-            (jwt.$attributes.role_id === 1)
-                ? response.status(200).json({ success: true, users: {users,rolesUser}, message: `Lista de usuarios`, code: 200 })
-                : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+
+              if (jwt.$attributes.role_id === 1) {
+                for (const i of array) {
+                    const appoiment = await i.hasAppoiment().fetch();
+                    if (i.$attributes.role_id === 2) {
+                        const clients = i.$attributes;
+                        console.log(clients);
+                        appoimentUser.push({
+                            "id":clients.id,
+                            "username": clients.username,
+                            "name": clients.name,
+                            "lastname": clients.lastname,
+                            "phone": clients.phone,
+                            "email": clients.email,
+                            "address": clients.address,
+                            "nss": clients.nss,
+                            "rfc": clients.rfc,
+                            "appoiment_id":clients.appoiment_id,
+                            appoiment
+                        })
+
+                    }
+                }
+                return response.status(200).json({ success: true, users: appoimentUser, message: `Lista de usuarios`, code: 200 });
+
+            } else {
+                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+            }
+            // (jwt.$attributes.role_id === 1)
+            //     ? response.status(200).json({ success: true, users: appoimentUser, message: `Lista de usuarios`, code: 200 })
+            //     : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
         } catch (error) {
             console.log(error);
             // return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
