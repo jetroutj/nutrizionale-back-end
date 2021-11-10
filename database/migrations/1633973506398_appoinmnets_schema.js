@@ -11,7 +11,7 @@ class AppoinmnetsSchema extends Schema {
       table.integer('consulting_room_id');
       table.string('motive',500)
       table.date('date')
-      table.string('schedule')
+      table.string('schedule',500)
       table.timestamps()
     })
   }

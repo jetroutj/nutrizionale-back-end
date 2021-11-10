@@ -26,13 +26,15 @@ Route.post('password','UserController.jwtpassword');
 Route.post('users','UserController.createUser');
 Route.get('searchName/:name','UserController.searchName');
 Route.get('searchPhone/:phone','UserController.searchPhone');
-Route.get('searchID/:id','UserController.searchId');
+Route.get('searchUserID/:id','UserController.searchId');
 Route.get('userAppoiment/:name','UserController.userAppoiment');
 Route.get('userDiet/:name','UserController.userDiet');
 
 Route.get('productList','ProductController.index')
+Route.get('productId/:id','ProductController.productId');
 Route.post('productCreate','ProductController.store')
 Route.put('productUpdate/:id','ProductController.update')
+Route.put('updateToggle/:id','ProductController.updateToggle')
 Route.delete('productDel/:id','ProductController.delete')
 
 Route.get('dietList','DietController.index')
@@ -41,9 +43,10 @@ Route.put('dietUpdate','DietController.update')
 Route.delete('dietDel','DietController.delete')
 
 Route.get('AppoinmnetList','AppoinmnetController.index')
+Route.get('AppoinmnetId/:id','AppoinmnetController.appoinmnetId');
 Route.post('AppoinmnetCreate','AppoinmnetController.store')
-Route.put('AppoinmnetUpdate','AppoinmnetController.update')
-Route.delete('AppoinmnetDel','AppoinmnetController.delete')
+Route.put('AppoinmnetUpdate/:id','AppoinmnetController.update')
+Route.delete('AppoinmnetDel/:id','AppoinmnetController.delete')
 
 //Route.get('','')
 }).prefix('api/v1');

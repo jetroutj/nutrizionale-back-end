@@ -12,7 +12,7 @@ class ProductsSchema extends Schema {
       table.string('price',50)
       table.string('serialNumber',50)
       table.integer('quantity',10)
-      table.boolean('estado')
+      table.string('estado')
       table.timestamps()
     })
   }

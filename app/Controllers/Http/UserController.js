@@ -345,6 +345,16 @@ class UserController {
             console.log(error);
         }
     }
+    async searchId({params,auth, response}){
+        const user = await User.findOrFail(params.id)
+        const jwt = await auth.getUser();
+        
+        (jwt.$attributes.role_id === 1)
+        ? response.status(200).json({ success: true, users: user, message: `Lista de usuarios`, code: 200 })
+        : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+        
+
+    }
 }
 
 module.exports = UserController

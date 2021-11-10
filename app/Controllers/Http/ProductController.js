@@ -73,6 +73,29 @@ class ProductController {
             console.log(error);
         }
     }
+    async updateToggle({auth, response, request,params}){
+        try {
+            const jwt = await auth.getUser();
+
+            const {
+            estado
+
+            } = request.all();
+            const products = await Product.findOrFail(params.id)
+            if (jwt.$attributes.role_id === 1) {
+
+                products.estado = estado
+
+                await products.save()
+                return response.status(201).json({ success: true, result: products, message: `Estado actualizado correctamente`, code: 201 });
+            }else{
+                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
     async delete({auth, response,params}){
         try {
             const jwt = await auth.getUser()
@@ -86,6 +109,16 @@ class ProductController {
         } catch (error) {
             console.log(error);
         }
+    }
+    async productId({params,auth, response}){
+        const product = await Product.findOrFail(params.id)
+        const jwt = await auth.getUser();
+        
+        (jwt.$attributes.role_id === 1)
+        ? response.status(200).json({ success: true, products: product, message: `Lista de productos`, code: 200 })
+        : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+        
+
     }
 
 }
