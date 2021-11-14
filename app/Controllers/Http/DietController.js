@@ -2,17 +2,48 @@
 
 const Diet = use('App/Models/Diet');
 const User = use('App/Models/User');
+
 class DietController {
 
     async index ({auth, response}){
         try {
             const jwt = await auth.getUser();
              let rows = await Diet.all();
-       
-        
-            (jwt.$attributes.role_id === 1)
-                ? response.status(200).json({ success: true, users: rows, message: `Lista de dietas`, code: 200 })
-                : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+             const array = rows.rows
+             let diets = []
+             if (jwt.$attributes.role_id === 1) {
+                for (const i of array) {
+                    const user = await i.hasUser().fetch();
+                    if (i) {
+                        const data = i.$attributes;
+                        diets.push({
+                            "id": data.id,
+                            "user_id": data.user_id,
+                            "disease": data.disease,
+                            "weight": data.weight,
+                            "size": data.size,
+                            "age": data.age,
+                            "allergy": data.allergy,
+                            "imc": data.imc,
+                            "gender":data.gender,
+                            "calories": data.calories,
+                            "typeDiet": data.typeDiet,
+                            "date": JSON.parse(data.date),
+                            "weekOne": JSON.parse(data.weekOne),
+                            "weekTwo": JSON.parse(data.weekTwo),
+                            "weekThree": JSON.parse(data.weekThree) ,
+                            "weekFour": JSON.parse(data.weekFour),
+                            user
+                        })
+                    }
+                }
+                return response.status(200).json({ success: true,diets:diets, message: `Lista de dietas`, code: 200 });
+            }else{
+                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+             }
+            // (jwt.$attributes.role_id === 1)
+            //     ? response.status(200).json({ success: true, users: rows, message: `Lista de dietas`, code: 200 })
+            //     : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
         } catch (error) {
             console.log(error);
             // return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
@@ -29,18 +60,34 @@ class DietController {
                 size,
                 age,
                 allergy,
-                plan,
-                user_id
+                imc,
+                gender,
+                user_id,
+                calories,
+                typeDiet,
+                date,
+                weekOne,
+                weekTwo,
+                weekThree,
+                weekFour
             } = request.all();
 
             if (jwt.$attributes.role_id === 1) {
-                diet.disease = disease,
-                diet.weight = weight,
-                diet.size = size,
-                diet.age = age,
-                diet.allergy = allergy,
-                diet.plan = plan,
+                diet.disease = disease
+                diet.weight = weight
+                diet.size = size
+                diet.age = age
+                diet.allergy = allergy
+                diet.imc = imc
+                diet.gender = gender
+                diet.calories = calories
+                diet.typeDiet = typeDiet
                 diet.user_id = user_id
+                diet.date = JSON.stringify(date)
+                diet.weekOne = JSON.stringify(weekOne)
+                diet.weekTwo = JSON.stringify(weekTwo)
+                diet.weekThree = JSON.stringify(weekThree)
+                diet.weekFour = JSON.stringify(weekFour)
 
                 await diet.save()
                 const updateId = await User.findOrFail(user_id)
@@ -61,30 +108,39 @@ class DietController {
             const jwt = await auth.getUser();
 
             const {
-                diseases,
+                disease,
                 weight,
                 size,
                 age,
                 allergy,
-                plan,
+                imc,
+                gender,
                 user_id,
-                status_user_id,
-                role_id,
-                appoiments_id
+                calories,
+                typeDiet,
+                date,
+                weekOne,
+                weekTwo,
+                weekThree,
+                weekFour
             } = request.all();
 
             if (jwt.$attributes.role_id === 1) {
-                diet.diseases = diseases,
-                diet.weight = weight,
-                diet.size = size,
-                diet.age = age,
-                diet.allergy = allergy,
-                diet.plan = plan,
-                diet.user_id = user_id,
-                diet.status_user_id = status_user_id,
-                diet.role_id = role_id,
-                diet.appoiments_id = appoiments_id
-
+                diet.disease = disease
+                diet.weight = weight
+                diet.size = size
+                diet.age = age
+                diet.allergy = allergy
+                diet.imc = imc
+                diet.gender = gender
+                diet.calories = calories
+                diet.typeDiet = typeDiet
+                diet.user_id = user_id
+                diet.date = JSON.stringify(date)
+                diet.weekOne = JSON.stringify(weekOne)
+                diet.weekTwo = JSON.stringify(weekTwo)
+                diet.weekThree = JSON.stringify(weekThree)
+                diet.weekFour = JSON.stringify(weekFour)
                 await diet.save()
                 return response.status(201).json({ success: true, result: diet, message: `Dieta creada correctamente`, code: 201 });
 
@@ -96,7 +152,7 @@ class DietController {
 
     async delete ({ params, auth, response}){
         try {
-            const jwt = await auth.getUser()
+            const jwt = await auth.getUser();
             if (jwt.$attributes.role_id === 1) {
                 const diet = await Diet.findOrFail(params.id)
                 await diet.delete();
@@ -109,6 +165,47 @@ class DietController {
         }
     }
 
+    async dietUserId({params, auth, response}){
+        try {
+            const jwt = await auth.getUser();
+            const i = await Diet.findOrFail(params.id)
+
+            let diet = []
+
+            if (jwt.$attributes.role_id === 1) {
+                const user = await i.hasUser().fetch();
+                if (i) {
+                    const data = i.$attributes;
+                    diet.push({
+                        "id": data.id,
+                        "user_id": data.user_id,
+                        "disease": data.disease,
+                        "weight": data.weight,
+                        "size": data.size,
+                        "age": data.age,
+                        "allergy": data.allergy,
+                        "imc": data.imc,
+                        "gender":data.gender,
+                        "calories": data.calories,
+                        "typeDiet": data.typeDiet,
+                        "date": JSON.parse(data.date),
+                        "weekOne": JSON.parse(data.weekOne),
+                        "weekTwo": JSON.parse(data.weekTwo),
+                        "weekThree": JSON.parse(data.weekThree) ,
+                        "weekFour": JSON.parse(data.weekFour),
+                        user
+                    })
+                }
+                return response.status(200).json({ success: true,diets:diet, message: `Dieta encontrada`, code: 200 });
+
+            }else{
+                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+             }
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 }
 

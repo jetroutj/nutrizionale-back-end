@@ -5,7 +5,9 @@ const Model = use('Model')
 
 class Diet extends Model {
 
-
+    hasUser(){
+        return this.belongsTo('App/Models/User','user_id','id')
+      }
 }
 
 module.exports = Diet

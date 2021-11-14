@@ -16,12 +16,12 @@ const ConsultingRoom = use('App/Models/ConsultingRoom')
 class ConsultingRoomSeeder {
   async run () {
     await ConsultingRoom.createMany([
-      {
-        name:"Nutrizionale",
-        address:"Quetzalcoatl 4055 Jardines Del Sol, Zapopan",
-        phone:"33 1303 8526",
-        email:"nutrizionalespa@gmail.com"
-      }
+      // {
+      //   name:"Nutrizionale",
+      //   address:"Quetzalcoatl 4055 Jardines Del Sol, Zapopan",
+      //   phone:"33 1303 8526",
+      //   email:"nutrizionalespa@gmail.com"
+      // }
     ])
   }
 }

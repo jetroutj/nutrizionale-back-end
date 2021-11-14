@@ -355,6 +355,47 @@ class UserController {
         
 
     }
+    async listForUser({auth, response}){
+        try {
+            const jwt = await auth.getUser();
+            const clients = await User.findOrFail(jwt.$attributes.id)
+            
+            // console.log(array);
+            let user = []
+            if (jwt.$attributes.role_id === 2) {
+                
+                    const appoiment = await clients.hasAppoiment().fetch();
+                    const diet = await clients.hasDiet().fetch();
+                    if (clients.$attributes.role_id === 2) {
+                        // const clients = i.$originalAttributes;
+                        console.log(clients);
+                        user.push({
+                            "id":clients.id,
+                            "username": clients.username,
+                            "name": clients.name,
+                            "lastname": clients.lastname,
+                            "phone": clients.phone,
+                            "email": clients.email,
+                            "address": clients.address,
+                            "nss": clients.nss,
+                            "rfc": clients.rfc,
+                            "appoiment_id":clients.appoiment_id,
+                            appoiment,
+                            diet
+                        })
+    
+                    }
+                
+                return response.status(200).json({ success: true, users: user, message: `Lista de usuarios`, code: 200 });
+    
+            } else {
+                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
 }
 
 module.exports = UserController

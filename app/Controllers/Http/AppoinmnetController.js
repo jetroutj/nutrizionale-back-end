@@ -136,13 +136,6 @@ class AppoinmnetController {
             }else{
                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
             }
-
-            // const appoiment = await Appoinmnet.findOrFail(params.id)
-            // const jwt = await auth.getUser();
-            // (jwt.$attributes.role_id === 1)
-            // ? response.status(200).json({ success: true, appoiments: appoiment, message: `Cita consultada correctamente`, code: 200 })
-            // : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
-            
         } catch (error) {
             console.log(error);
         }

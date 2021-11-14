@@ -27,6 +27,7 @@ Route.post('users','UserController.createUser');
 Route.get('searchName/:name','UserController.searchName');
 Route.get('searchPhone/:phone','UserController.searchPhone');
 Route.get('searchUserID/:id','UserController.searchId');
+Route.get('listForUser','UserController.listForUser');
 Route.get('userAppoiment/:name','UserController.userAppoiment');
 Route.get('userDiet/:name','UserController.userDiet');
 
@@ -38,9 +39,10 @@ Route.put('updateToggle/:id','ProductController.updateToggle')
 Route.delete('productDel/:id','ProductController.delete')
 
 Route.get('dietList','DietController.index')
+Route.get('dietUserId/:id','DietController.dietUserId')
 Route.post('dietCreate','DietController.store')
-Route.put('dietUpdate','DietController.update')
-Route.delete('dietDel','DietController.delete')
+Route.put('dietUpdate/:id','DietController.update')
+Route.delete('dietDel/:id','DietController.delete')
 
 Route.get('AppoinmnetList','AppoinmnetController.index')
 Route.get('AppoinmnetId/:id','AppoinmnetController.appoinmnetId');
