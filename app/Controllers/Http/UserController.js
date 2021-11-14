@@ -30,7 +30,7 @@ class UserController {
                             "nss": clients.nss,
                             "rfc": clients.rfc,
                             "appoiment_id":clients.appoiment_id,
-                            appoiment
+                             appoiment
                         })
 
                     }
@@ -381,7 +381,26 @@ class UserController {
                             "rfc": clients.rfc,
                             "appoiment_id":clients.appoiment_id,
                             appoiment,
-                            diet
+                            "diet":{        
+                             "id": JSON.parse(diet.id),
+                            "user_id": JSON.parse(diet.user_id),
+                            "disease": JSON.parse(diet.disease),
+                            "weight": JSON.parse(diet.weight),
+                            "size": JSON.parse(diet.size),
+                            "age": JSON.parse(diet.age),
+                            // "allergy": JSON.parse(diet.allergy),
+                            "calories": JSON.parse(diet.calories),
+                            "typeDiet": JSON.parse(diet.typeDiet),
+                            "imc": JSON.parse(diet.imc),
+                            "stateWeight":JSON.parse(diet.stateWeight),
+                            "gender": JSON.parse(diet.gender),
+                            "date": JSON.parse(diet.date),
+                            "weekOne":JSON.parse(diet.weekOne),
+                            "weekTwo":JSON.parse(diet.weekTwo),
+                            "weekThree":JSON.parse(diet.weekThree),
+                            "weekFour":JSON.parse(diet.weekFour)
+                        }
+
                         })
     
                     }

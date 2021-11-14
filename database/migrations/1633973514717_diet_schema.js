@@ -16,6 +16,7 @@ class DietSchema extends Schema {
       table.string('calories',1000);
       table.string('typeDiet',1000);
       table.string('imc',50);
+      table.string('stateWeight',50);
       table.string('gender',50);
       table.json('date');
       table.json('weekOne');

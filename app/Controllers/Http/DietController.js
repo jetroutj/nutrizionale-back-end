@@ -25,6 +25,7 @@ class DietController {
                             "age": data.age,
                             "allergy": data.allergy,
                             "imc": data.imc,
+                            "stateWeight":date.stateWeight,
                             "gender":data.gender,
                             "calories": data.calories,
                             "typeDiet": data.typeDiet,
@@ -61,6 +62,7 @@ class DietController {
                 age,
                 allergy,
                 imc,
+                stateWeight,
                 gender,
                 user_id,
                 calories,
@@ -79,6 +81,7 @@ class DietController {
                 diet.age = age
                 diet.allergy = allergy
                 diet.imc = imc
+                diet.stateWeight = stateWeight
                 diet.gender = gender
                 diet.calories = calories
                 diet.typeDiet = typeDiet
@@ -114,6 +117,7 @@ class DietController {
                 age,
                 allergy,
                 imc,
+                stateWeight,
                 gender,
                 user_id,
                 calories,
@@ -132,6 +136,7 @@ class DietController {
                 diet.age = age
                 diet.allergy = allergy
                 diet.imc = imc
+                diet.stateWeight = stateWeight
                 diet.gender = gender
                 diet.calories = calories
                 diet.typeDiet = typeDiet
@@ -185,6 +190,7 @@ class DietController {
                         "age": data.age,
                         "allergy": data.allergy,
                         "imc": data.imc,
+                        "stateWeight":data.stateWeight,
                         "gender":data.gender,
                         "calories": data.calories,
                         "typeDiet": data.typeDiet,
