@@ -11,11 +11,14 @@ class DietController {
              let rows = await Diet.all();
              const array = rows.rows
              let diets = []
+
+
              if (jwt.$attributes.role_id === 1) {
                 for (const i of array) {
                     const user = await i.hasUser().fetch();
                     if (i) {
                         const data = i.$attributes;
+                        console.log(data);
                         diets.push({
                             "id": data.id,
                             "user_id": data.user_id,
@@ -25,7 +28,7 @@ class DietController {
                             "age": data.age,
                             "allergy": data.allergy,
                             "imc": data.imc,
-                            "stateWeight":date.stateWeight,
+                            "stateWeight":data.stateWeight,
                             "gender":data.gender,
                             "calories": data.calories,
                             "typeDiet": data.typeDiet,
@@ -34,7 +37,7 @@ class DietController {
                             "weekTwo": JSON.parse(data.weekTwo),
                             "weekThree": JSON.parse(data.weekThree) ,
                             "weekFour": JSON.parse(data.weekFour),
-                            user
+                             user
                         })
                     }
                 }
