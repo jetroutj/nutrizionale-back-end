@@ -267,7 +267,7 @@ class DietSeeder {
           startDate: "",
           endDate: ""
         }) ,
-        user_id: 2,
+        user_id: 4,
       },
     ]);
   }

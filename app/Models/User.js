@@ -28,7 +28,7 @@ class User extends Model {
     return this.belongsTo('App/Models/Appoinmnet','appoiment_id','user_id')
   }
   hasDiet(){
-    return this.belongsTo('App/Models/Diet','diet_id','user_id')
+    return this.belongsTo('App/Models/Diet','diet_id','id')
   }
   
 }
