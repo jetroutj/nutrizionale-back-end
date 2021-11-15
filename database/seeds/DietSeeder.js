@@ -17,256 +17,264 @@ class DietSeeder {
   async run() {
     await Diet.createMany([
       {
-        disease: "Ninguna",
-        weight: "20",
-        size: "50",
-        age: "25",
-        allergy: "No",
+        disease:"Ninguna",
+        weight:"80",
+        size:"1.70",
+        age:"23",
+        allergy:"No",
+        imc:"27.68",
+        stateWeight:"Sobrepeso",
+        gender:"Hombre",
+        calories:"1200",
+        typeDiet:"Standard",
+        date:JSON.stringify({
+          startDate:"2021-11-15T06:00:00.000Z",
+          endDate:"2021-12-06T06:00:00.000Z"
+        }),
         weekOne: JSON.stringify(
           {
             monday: {
-              breakfast: "",
-              interOne: "",
-              lunch: "",
-              interTwo: "",
-              dinner: "",
+              breakfast: "buebito a la mexicana",
+              interOne: "1 Manzana",
+              lunch: "3 Tacos de asada",
+              interTwo: "2 platanos",
+              dinner: "Chuleta con verduras al vapor",
             },
             tuesday: {
-              breakfast: "",
-              interOne: "",
-              lunch: "",
-              interTwo: "",
-              dinner: ""
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
             },
             wednesday: {
-              breakfast: "",
-              interOne: "",
-              lunch: "",
-              interTwo: "",
-              dinner: ""
+              breakfast: "Chuleta con ensalada",
+              interOne: "1 pera y 1 manzana",
+              lunch: "pechuga de pollo",
+              interTwo: "1 pera y 1 manzana",
+              dinner: "1 sandwich"
             },
             thuesday: {
-              breakfast: "",
-              interOne: "",
-              lunch: "",
-              interTwo: "",
-              dinner: ""
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
             },
             friday: {
-              breakfast: "",
-              interOne: "",
-              lunch: "",
-              interTwo: "",
-              dinner: ""
+              breakfast: "Chuleta con ensalada",
+              interOne: "1 pera y 1 manzana",
+              lunch: "pechuga de pollo",
+              interTwo: "1 pera y 1 manzana",
+              dinner: "1 sandwich"
             },
             saturday: {
-              breakfast: "",
-              interOne: "",
-              lunch: "",
-              interTwo: "",
-              dinner: ""
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
             },
             sunday: {
-              breakfast: "",
-              interOne: "",
-              lunch: "",
-              interTwo: "",
-              dinner: ""
+              breakfast: "libre",
+              interOne: "libre",
+              lunch: "libre",
+              interTwo: "libre",
+              dinner: "libre"
             },
             routine: {
-              monday: "",
-              tuesday:"",
-              wednesday:"",
-              thuesday:"",
-              friday:"",
-              saturday:"",
-              sunday:""
+              monday: "2 kilometros trtando",
+              tuesday:"1000 lagartijas",
+              wednesday:"500 sentadillas",
+              thuesday:"200 abdominales",
+              friday:"2 horas de natación",
+              saturday:"1 hora de caminata",
+              sunday:"descanso"
             }
           }),
-        weekTwo: JSON.stringify({
-          monday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: "",
-          },
-          tuesday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          wednesday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          thuesday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          friday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          saturday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          sunday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          routine: {
-            monday: "",
-            tuesday:"",
-            wednesday:"",
-            thuesday:"",
-            friday:"",
-            saturday:"",
-            sunday:""
-          }
-        }),
-        weekThree: JSON.stringify({
-          monday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: "",
-          },
-          tuesday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          wednesday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          thuesday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          friday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          saturday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          sunday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          routine: {
-            monday: "",
-            tuesday:"",
-            wednesday:"",
-            thuesday:"",
-            friday:"",
-            saturday:"",
-            sunday:""
-          }
-        }),
-        weekFour:JSON.stringify({
-          monday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: "",
-          },
-          tuesday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          wednesday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          thuesday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          friday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          saturday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          sunday: {
-            breakfast: "",
-            interOne: "",
-            lunch: "",
-            interTwo: "",
-            dinner: ""
-          },
-          routine: {
-            monday: "",
-            tuesday:"",
-            wednesday:"",
-            thuesday:"",
-            friday:"",
-            saturday:"",
-            sunday:""
-          }
-        }),
-        date: JSON.stringify({
-          startDate: "",
-          endDate: ""
-        }) ,
+        weekTwo: JSON.stringify(
+          {
+            monday: {
+              breakfast: "buebito a la mexicana",
+              interOne: "1 Manzana",
+              lunch: "3 Tacos de asada",
+              interTwo: "2 platanos",
+              dinner: "Chuleta con verduras al vapor",
+            },
+            tuesday: {
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
+            },
+            wednesday: {
+              breakfast: "Chuleta con ensalada",
+              interOne: "1 pera y 1 manzana",
+              lunch: "pechuga de pollo",
+              interTwo: "1 pera y 1 manzana",
+              dinner: "1 sandwich"
+            },
+            thuesday: {
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
+            },
+            friday: {
+              breakfast: "Chuleta con ensalada",
+              interOne: "1 pera y 1 manzana",
+              lunch: "pechuga de pollo",
+              interTwo: "1 pera y 1 manzana",
+              dinner: "1 sandwich"
+            },
+            saturday: {
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
+            },
+            sunday: {
+              breakfast: "libre",
+              interOne: "libre",
+              lunch: "libre",
+              interTwo: "libre",
+              dinner: "libre"
+            },
+            routine: {
+              monday: "2 kilometros trtando",
+              tuesday:"1000 lagartijas",
+              wednesday:"500 sentadillas",
+              thuesday:"200 abdominales",
+              friday:"2 horas de natación",
+              saturday:"1 hora de caminata",
+              sunday:"descanso"
+            }
+          }),
+        weekThree: JSON.stringify(
+          {
+            monday: {
+              breakfast: "buebito a la mexicana",
+              interOne: "1 Manzana",
+              lunch: "3 Tacos de asada",
+              interTwo: "2 platanos",
+              dinner: "Chuleta con verduras al vapor",
+            },
+            tuesday: {
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
+            },
+            wednesday: {
+              breakfast: "Chuleta con ensalada",
+              interOne: "1 pera y 1 manzana",
+              lunch: "pechuga de pollo",
+              interTwo: "1 pera y 1 manzana",
+              dinner: "1 sandwich"
+            },
+            thuesday: {
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
+            },
+            friday: {
+              breakfast: "Chuleta con ensalada",
+              interOne: "1 pera y 1 manzana",
+              lunch: "pechuga de pollo",
+              interTwo: "1 pera y 1 manzana",
+              dinner: "1 sandwich"
+            },
+            saturday: {
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
+            },
+            sunday: {
+              breakfast: "libre",
+              interOne: "libre",
+              lunch: "libre",
+              interTwo: "libre",
+              dinner: "libre"
+            },
+            routine: {
+              monday: "2 kilometros trtando",
+              tuesday:"1000 lagartijas",
+              wednesday:"500 sentadillas",
+              thuesday:"200 abdominales",
+              friday:"2 horas de natación",
+              saturday:"1 hora de caminata",
+              sunday:"descanso"
+            }
+          }),
+        weekFour:JSON.stringify(
+          {
+            monday: {
+              breakfast: "buebito a la mexicana",
+              interOne: "1 Manzana",
+              lunch: "3 Tacos de asada",
+              interTwo: "2 platanos",
+              dinner: "Chuleta con verduras al vapor",
+            },
+            tuesday: {
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
+            },
+            wednesday: {
+              breakfast: "Chuleta con ensalada",
+              interOne: "1 pera y 1 manzana",
+              lunch: "pechuga de pollo",
+              interTwo: "1 pera y 1 manzana",
+              dinner: "1 sandwich"
+            },
+            thuesday: {
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
+            },
+            friday: {
+              breakfast: "Chuleta con ensalada",
+              interOne: "1 pera y 1 manzana",
+              lunch: "pechuga de pollo",
+              interTwo: "1 pera y 1 manzana",
+              dinner: "1 sandwich"
+            },
+            saturday: {
+              breakfast: "buebito con jamón",
+              interOne: "2 peras",
+              lunch: "Filete de res, con panela y verduras",
+              interTwo: "2 peras",
+              dinner: "Chuleta con verduras al vapor"
+            },
+            sunday: {
+              breakfast: "libre",
+              interOne: "libre",
+              lunch: "libre",
+              interTwo: "libre",
+              dinner: "libre"
+            },
+            routine: {
+              monday: "2 kilometros trtando",
+              tuesday:"1000 lagartijas",
+              wednesday:"500 sentadillas",
+              thuesday:"200 abdominales",
+              friday:"2 horas de natación",
+              saturday:"1 hora de caminata",
+              sunday:"descanso"
+            }
+          }),
         user_id: 4,
       },
     ]);
