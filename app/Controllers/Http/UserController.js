@@ -405,7 +405,7 @@ class UserController {
     
                     }
                 
-                return response.status(200).json({ success: true, users: user, message: `Lista de usuarios`, code: 200 });
+                return response.status(200).json({users: user});
     
             } else {
                 return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });

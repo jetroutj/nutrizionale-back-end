@@ -10,7 +10,7 @@ class ProductController {
             let rows = await Product.all();
 
             (jwt.$attributes.role_id === 1 || jwt.$attributes.role_id === 2 && jwt.$attributes.status_user_id === 1)
-            ? response.status(200).json({ success: true, products: rows, message: `Lista de productos`, code: 200 })
+            ? response.status(200).json({products: rows})
             : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
 
         } catch (error) {
@@ -119,6 +119,17 @@ class ProductController {
         : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
         
 
+    }
+    async productsOfAuth({response}){
+        try {
+            let rows = await Product.all();
+
+             response.status(200).json({products: rows})
+
+        } catch (error) {
+            console.log(error);
+            // return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
+        }
     }
 
 }

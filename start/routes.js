@@ -32,6 +32,7 @@ Route.get('userAppoiment/:name','UserController.userAppoiment');
 Route.get('userDiet/:name','UserController.userDiet');
 
 Route.get('productList','ProductController.index')
+Route.get('productsOfAuth','ProductController.productsOfAuth')
 Route.get('productId/:id','ProductController.productId');
 Route.post('productCreate','ProductController.store')
 Route.put('productUpdate/:id','ProductController.update')
