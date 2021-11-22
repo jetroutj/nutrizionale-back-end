@@ -364,11 +364,11 @@ class UserController {
             let user = []
             if (jwt.$attributes.role_id === 2) {
                 
-                    const appoiment = await clients.hasAppoiment().fetch();
+                    const appoiment = await clients.hasAppoiment().fetch() || null;
                     const diet = await clients.hasDiet().fetch();
                     if (clients.$attributes.role_id === 2) {
                         // const clients = i.$originalAttributes;
-                        console.log(clients);
+                        // console.log(clients);
                         user.push({
                             "id":clients.id,
                             "username": clients.username,
