@@ -70,7 +70,7 @@ class UserSeeder {
         rfc:"",
         status_user_id:1,
         role_id: 2,
-        diet_id: 3,
+        diet_id: 1,
         consulting_room_id:1
       },
       {
