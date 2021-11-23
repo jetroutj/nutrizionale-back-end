@@ -97,7 +97,7 @@ class DietController {
 
                 await diet.save()
                 const updateId = await User.findOrFail(user_id)
-                updateId.diet_id = user_id
+                updateId.diet_id = diet.id
                 await updateId.save()
                 return response.status(201).json({ success: true, result: diet, message: `Dieta creada correctamente`, code: 201 });
 
