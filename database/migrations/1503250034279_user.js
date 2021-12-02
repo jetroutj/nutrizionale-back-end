@@ -19,6 +19,7 @@ class UserSchema extends Schema {
       table.string('phone',50)
       table.string('address',50)
       table.string('password',200)
+      table.string('estado');
       table.string('rfc',30)
       table.timestamps()
     })

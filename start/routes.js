@@ -46,10 +46,14 @@ Route.put('dietUpdate/:id','DietController.update')
 Route.delete('dietDel/:id','DietController.delete')
 
 Route.get('AppoinmnetList','AppoinmnetController.index')
+Route.get('AppoinmnetListComplete','AppoinmnetController.complete')
+Route.get('AppoinmnetListHistory','AppoinmnetController.history')
+Route.get('AppoinmnetListActive','AppoinmnetController.active')
 Route.get('AppoinmnetId/:id','AppoinmnetController.appoinmnetId');
 Route.post('AppoinmnetCreate','AppoinmnetController.store')
 Route.put('AppoinmnetUpdate/:id','AppoinmnetController.update')
 Route.delete('AppoinmnetDel/:id','AppoinmnetController.delete')
+Route.put('stateAppiment/:id','AppoinmnetController.stateAppiment')
 
 //Route.get('','')
 }).prefix('api/v1');

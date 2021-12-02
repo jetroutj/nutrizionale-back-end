@@ -15,7 +15,7 @@ class UserController {
 
               if (jwt.$attributes.role_id === 1) {
                 for (const i of array) {
-                    const appoiment = await i.hasAppoiment().fetch();
+                    // const appoiment = await i.hasAppoiment().fetch();
                     if (i.$attributes.role_id === 2) {
                         const clients = i.$attributes;
                         console.log(clients);
@@ -30,7 +30,7 @@ class UserController {
                             "nss": clients.nss,
                             "rfc": clients.rfc,
                             "appoiment_id":clients.appoiment_id,
-                             appoiment
+                            //  appoiment
                         })
 
                     }
@@ -362,25 +362,43 @@ class UserController {
             
             // console.log(array);
             let user = []
+            let appoimentArray = [];
             if (jwt.$attributes.role_id === 2) {
                 
                     const appoiment = await clients.hasAppoiment().fetch() || null;
+                    let appoimentHasMany = appoiment.rows;
+                    for (const res of appoimentHasMany) {
+                        if (res.$attributes.estado === 'disponible') {
+                            const data = res.$attributes;
+
+                            appoimentArray.push({
+                                "id": data.id,
+                                "user_id": data.user_id,
+                                "consulting_room_id": data.consulting_room_id,
+                                "motive": data.motive,
+                                "date": data.date,
+                                "schedule": data.schedule,
+                                "estado":data.estado,
+                            })
+
+                        }
+
+                    }
                     const diet = await clients.hasDiet().fetch();
                     if (clients.$attributes.role_id === 2) {
-                        // const clients = i.$originalAttributes;
-                        // console.log(clients);
+                        const response = clients.$originalAttributes;
                         user.push({
-                            "id":clients.id,
-                            "username": clients.username,
-                            "name": clients.name,
-                            "lastname": clients.lastname,
-                            "phone": clients.phone,
-                            "email": clients.email,
-                            "address": clients.address,
-                            "nss": clients.nss,
-                            "rfc": clients.rfc,
-                            "appoiment_id":clients.appoiment_id,
-                            appoiment,
+                            "id":response.id,
+                            "username": response.username,
+                            "name": response.name,
+                            "lastname": response.lastname,
+                            "phone": response.phone,
+                            "email": response.email,
+                            "address": response.address,
+                            "nss": response.nss,
+                            "rfc": response.rfc,
+                            "appoiment_id":response.appoiment_id,
+                            appoimentArray,
                             "diet":{        
                              "id": diet.id,
                              "user_id": diet.user_id,

@@ -18,6 +18,7 @@ class DietSchema extends Schema {
       table.string('imc',50);
       table.string('stateWeight',50);
       table.string('gender',50);
+      table.string('estado');
       table.json('date');
       table.json('weekOne');
       table.json('weekTwo');
