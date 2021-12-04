@@ -18,9 +18,11 @@ const Route = use('Route')
 
 Route.group(()=>{
 Route.get('usersList','UserController.index');
+Route.get('listActiveSupend','UserController.listActiveSupend');
 Route.post('login','UserController.login');
 Route.post('usersCreate','UserController.store');
 Route.put(`usersUpdate/:id`,'UserController.update');
+Route.put(`updateStateUser/:id`,'UserController.updateStateUser');
 Route.delete('usersDelete/:id','UserController.usersDelete');
 Route.post('password','UserController.jwtpassword');
 Route.post('users','UserController.createUser');

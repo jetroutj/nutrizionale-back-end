@@ -16,7 +16,7 @@ class UserController {
               if (jwt.$attributes.role_id === 1) {
                 for (const i of array) {
                     // const appoiment = await i.hasAppoiment().fetch();
-                    if (i.$attributes.role_id === 2) {
+                    if (i.$attributes.role_id === 2 && i.$attributes.estado === 'activo') {
                         const clients = i.$attributes;
                         console.log(clients);
                         appoimentUser.push({
@@ -29,6 +29,7 @@ class UserController {
                             "address": clients.address,
                             "nss": clients.nss,
                             "rfc": clients.rfc,
+                            "estado":clients.estado,
                             "appoiment_id":clients.appoiment_id,
                             //  appoiment
                         })
@@ -63,7 +64,8 @@ class UserController {
                 password,
                 rfc,
                 status_user_id = 1,
-                role_id = 2
+                role_id = 2,
+                estado = 'activo'
 
             } = request.all();
 
@@ -77,8 +79,9 @@ class UserController {
                     user.address = address,
                     user.password = password,
                     user.rfc = rfc
-                user.status_user_id = status_user_id,
-                    user.role_id = role_id
+                    user.status_user_id = status_user_id,
+                    user.role_id = role_id,
+                    user.estado = estado
 
                 await user.save();
                 return response.status(201).json({ success: true, result: user, message: `Usuario creado correctamente`, code: 201 });
@@ -355,6 +358,22 @@ class UserController {
         
 
     }
+    async updateStateUser({ request, params, auth, response }) {
+        try {
+            const jwt = await auth.getUser()
+            let { estado } = request.all();
+            const user = await User.findOrFail(params.id)
+            if (jwt.$attributes.role_id === 1) {
+                user.estado = estado
+                await user.save();
+                return response.status(200).json({ success: true, result: user, message: `Usuario actualizado correctamente`, code: 200 });
+            } else {
+                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+            }
+        } catch (error) {
+            return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
+        }
+    }
     async listForUser({auth, response}){
         try {
             const jwt = await auth.getUser();
@@ -371,19 +390,19 @@ class UserController {
                         if (res.$attributes.estado === 'disponible') {
                             const data = res.$attributes;
 
-                            appoimentArray.push({
-                                "id": data.id,
-                                "user_id": data.user_id,
-                                "consulting_room_id": data.consulting_room_id,
-                                "motive": data.motive,
-                                "date": data.date,
-                                "schedule": data.schedule,
-                                "estado":data.estado,
-                            })
+                            // appoimentArray.push({
+                            //     "id": data.id,
+                            //     "user_id": data.user_id,
+                            //     "consulting_room_id": data.consulting_room_id,
+                            //     "motive": data.motive,
+                            //     "date": data.date,
+                            //     "schedule": data.schedule,
+                            //     "estado":data.estado,
+                            // })
 
-                        }
+                        
 
-                    }
+                    
                     const diet = await clients.hasDiet().fetch();
                     if (clients.$attributes.role_id === 2) {
                         const response = clients.$originalAttributes;
@@ -398,7 +417,15 @@ class UserController {
                             "nss": response.nss,
                             "rfc": response.rfc,
                             "appoiment_id":response.appoiment_id,
-                            appoimentArray,
+                            "appoimentArray":{
+                                "id": data.id,
+                                "user_id": data.user_id,
+                                "consulting_room_id": data.consulting_room_id,
+                                "motive": data.motive,
+                                "date": data.date,
+                                "schedule": data.schedule,
+                                "estado":data.estado,
+                            },
                             "diet":{        
                              "id": diet.id,
                              "user_id": diet.user_id,
@@ -422,6 +449,8 @@ class UserController {
                         })
     
                     }
+                }
+                }
                 
                 return response.status(200).json({users: user});
     
@@ -432,6 +461,51 @@ class UserController {
             console.log(error);
         }
 
+    }
+
+    async listActiveSupend({ auth, response }) {
+        try {
+            const jwt = await auth.getUser();
+            const rows = await User.all();
+            const array = rows.rows
+            let appoimentUser = []
+
+
+              if (jwt.$attributes.role_id === 1) {
+                for (const i of array) {
+                    // const appoiment = await i.hasAppoiment().fetch();
+                    if (i.$attributes.role_id === 2 && i.$attributes.estado === 'suspendido') {
+                        const clients = i.$attributes;
+                        console.log(clients);
+                        appoimentUser.push({
+                            "id":clients.id,
+                            "username": clients.username,
+                            "name": clients.name,
+                            "lastname": clients.lastname,
+                            "phone": clients.phone,
+                            "email": clients.email,
+                            "address": clients.address,
+                            "nss": clients.nss,
+                            "rfc": clients.rfc,
+                            "estado":clients.estado,
+                            "appoiment_id":clients.appoiment_id,
+                            //  appoiment
+                        })
+
+                    }
+                }
+                return response.status(200).json({ success: true, users: appoimentUser, message: `Lista de usuarios`, code: 200 });
+
+            } else {
+                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+            }
+            // (jwt.$attributes.role_id === 1)
+            //     ? response.status(200).json({ success: true, users: appoimentUser, message: `Lista de usuarios`, code: 200 })
+            //     : response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+        } catch (error) {
+            console.log(error);
+            // return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
+        }
     }
 }
 
