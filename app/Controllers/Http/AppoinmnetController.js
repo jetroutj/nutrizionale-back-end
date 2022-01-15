@@ -73,6 +73,7 @@ class AppoinmnetController {
     
     if (jwt.$attributes.role_id === 1) {
         const userID = users.find(data => data.user_id === user_id && data.estado === 'disponible' );
+        const validateDate = users.find(data => data.date === date && data.schedule === schedule );
 
         appoiment.user_id = user_id
         appoiment.motive = motive
@@ -86,7 +87,12 @@ class AppoinmnetController {
                 console.log('Este usuario ya tiene una cita');
                 return response.status(201).json({ success: false, message: `Este usuario ya tiene una cita`, code: 201 });
                
-            } else{
+            }else if(validateDate){
+                console.log('Ya esta ocupado este horario');
+                return response.status(201).json({ success: false, message: `Ya esta ocupado este horario`, code: 201 });
+
+            }
+             else{
                 await appoiment.save()
             
                 const updateId = await User.findOrFail(user_id)

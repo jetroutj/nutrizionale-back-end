@@ -57,5 +57,8 @@ Route.put('AppoinmnetUpdate/:id','AppoinmnetController.update')
 Route.delete('AppoinmnetDel/:id','AppoinmnetController.delete')
 Route.put('stateAppiment/:id','AppoinmnetController.stateAppiment')
 
+Route.get('listTemplate','PreListDietController.index');
+
+
 //Route.get('','')
 }).prefix('api/v1');
