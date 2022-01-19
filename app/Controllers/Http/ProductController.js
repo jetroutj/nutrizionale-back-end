@@ -1,6 +1,9 @@
 'use strict'
 
 const Product = use('App/Models/Product');
+const AWS = use('aws-sdk'); 
+
+AWS.config.update({ accessKeyId: process.env.AWS_ACCESS_ID, secretAccessKey: process.env.AWS_SECRET_KEY, region: process.env.AWS_REGION});
 
 class ProductController {
 
@@ -27,11 +30,33 @@ class ProductController {
                 name,
                 price,
                 serialNumber,
-                quantity
+                quantity,
+                imagen
 
             } = request.all();
-            if (jwt.$attributes.role_id === 1) {
+            const bucketName = process.env.BUCKET_AWS; 
+            const s3 = new AWS.S3();
+            
+            const buf = new Buffer.from(imagen.replace(/^data:image\/\w+;base64,/, ""),'base64')
+            const type = imagen.split(';')[0].split('/')[1];
 
+                const bucketParams = {
+              Bucket: `${bucketName}`, // The name of the bucket. For example, 'sample_bucket_101'.
+              Key: `products/product-${serialNumber}.${type}`, // The name of the object. For example, 'sample_upload.txt'.
+              Body: buf,
+              ContentEncoding: 'base64',
+              ContentType: `image/${type}`,
+              ACL: 'public-read', // required. Notice the back ticks// required // The content of the object. For example, 'Hello world!".
+                }
+
+            if (jwt.$attributes.role_id === 1) {
+             const res = await new Promise((resolve,reject) => {
+                    s3.upload(bucketParams, (err,data) =>{
+                        err == null ? resolve(data) : reject(err)
+                    });
+                    
+                });
+                products.imagen = res.Location
                 products.name = name
                 products.price = price
                 products.serialNumber = serialNumber
@@ -52,12 +77,35 @@ class ProductController {
                 name,
                 price,
                 serialNumber,
-                quantity
+                quantity,
+                imagen
 
             } = request.all();
+            const bucketName = process.env.BUCKET_AWS; 
+            const s3 = new AWS.S3();
+            
+            const buf = new Buffer.from(imagen.replace(/^data:image\/\w+;base64,/, ""),'base64')
+            const type = imagen.split(';')[0].split('/')[1];
+
+                const bucketParams = {
+              Bucket: `${bucketName}`, // The name of the bucket. For example, 'sample_bucket_101'.
+              Key: `products/product-${serialNumber}.${type}`, // The name of the object. For example, 'sample_upload.txt'.
+              Body: buf,
+              ContentEncoding: 'base64',
+              ContentType: `image/${type}`,
+              ACL: 'public-read', // required. Notice the back ticks// required // The content of the object. For example, 'Hello world!".
+                }
+
+
             const products = await Product.findOrFail(params.id)
             if (jwt.$attributes.role_id === 1) {
-
+                const res = await new Promise((resolve,reject) => {
+                    s3.upload(bucketParams, (err,data) =>{
+                        err == null ? resolve(data) : reject(err)
+                    });
+                    
+                });
+                products.imagen = res.Location
                 products.name = name
                 products.price = price
                 products.serialNumber = serialNumber
@@ -129,6 +177,45 @@ class ProductController {
         } catch (error) {
             console.log(error);
             // return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
+        }
+    }
+    async uploadImage({ request, params, auth, response }) {
+        try {
+            let jwt = await auth.getUser();
+            const { imagen } = request.all();
+
+            const bucketName = process.env.BUCKET_AWS; 
+            const s3 = new AWS.S3();
+            
+            const buf = new Buffer.from(imagen.replace(/^data:image\/\w+;base64,/, ""),'base64')
+            const type = imagen.split(';')[0].split('/')[1];
+
+                const bucketParams = {
+              Bucket: `${bucketName}`, // The name of the bucket. For example, 'sample_bucket_101'.
+              Key: `products/product-${params.id}.${type}`, // The name of the object. For example, 'sample_upload.txt'.
+              Body: buf,
+              ContentEncoding: 'base64',
+              ContentType: `image/${type}`,
+              ACL: 'public-read', // required. Notice the back ticks// required // The content of the object. For example, 'Hello world!".
+                }
+            let product = await Product.findOrFail(params.id)
+            if (jwt.$attributes.role_id === 1 ) {
+                const res = await new Promise((resolve,reject) => {
+                    s3.upload(bucketParams, (err,data) =>{
+                        err == null ? resolve(data) : reject(err)
+                    });
+                    
+                });
+                product.imagen = res.Location
+                
+                await product.save();
+                return response.status(200).json({ success: true,data:res, message: `Imagen actualizada correctamente`, code: 200 });
+            } else {
+                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
+            }
+        } catch (error) {
+            console.log(error);
+            return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
         }
     }
 

@@ -13,6 +13,7 @@ class ProductsSchema extends Schema {
       table.string('serialNumber',50)
       table.integer('quantity',10)
       table.string('estado')
+      table.string('imagen')
       table.timestamps()
     })
   }

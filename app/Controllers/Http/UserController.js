@@ -378,53 +378,107 @@ class UserController {
         try {
             const jwt = await auth.getUser();
             const clients = await User.findOrFail(jwt.$attributes.id)
-            
-            // console.log(array);
+
             let user = []
-            let appoimentArray = [];
+          
             if (jwt.$attributes.role_id === 2) {
                 
-                    const appoiment = await clients.hasAppoiment().fetch() || null;
-                    let appoimentHasMany = appoiment.rows;
-                    for (const res of appoimentHasMany) {
-                        if (res.$attributes.estado === 'disponible') {
-                            const data = res.$attributes;
-
-                            // appoimentArray.push({
-                            //     "id": data.id,
-                            //     "user_id": data.user_id,
-                            //     "consulting_room_id": data.consulting_room_id,
-                            //     "motive": data.motive,
-                            //     "date": data.date,
-                            //     "schedule": data.schedule,
-                            //     "estado":data.estado,
-                            // })
-
-                        
-
-                    
+                    const appoiment = await clients.hasAppoiment().fetch();
                     const diet = await clients.hasDiet().fetch();
-                    if (clients.$attributes.role_id === 2) {
-                        const response = clients.$originalAttributes;
+                    const res = clients.$originalAttributes;
+
+                    if (appoiment === null && diet === null) {
+                                         
                         user.push({
-                            "id":response.id,
-                            "username": response.username,
-                            "name": response.name,
-                            "lastname": response.lastname,
-                            "phone": response.phone,
-                            "email": response.email,
-                            "address": response.address,
-                            "nss": response.nss,
-                            "rfc": response.rfc,
-                            "appoiment_id":response.appoiment_id,
+                            "id":res.id,
+                            "username": res.username,
+                            "name": res.name,
+                            "lastname": res.lastname,
+                            "phone": res.phone,
+                            "email": res.email,
+                            "address": res.address,
+                            "nss": res.nss,
+                            "rfc": res.rfc,
+                            "appoimentArray":null,
+                            "diet":null
+
+                        });
+                    } else if(appoiment && diet === null){
+                        user.push({
+                            "id":res.id,
+                            "username": res.username,
+                            "name": res.name,
+                            "lastname": res.lastname,
+                            "phone": res.phone,
+                            "email": res.email,
+                            "address": res.address,
+                            "nss": res.nss,
+                            "rfc": res.rfc,
                             "appoimentArray":{
-                                "id": data.id,
-                                "user_id": data.user_id,
-                                "consulting_room_id": data.consulting_room_id,
-                                "motive": data.motive,
-                                "date": data.date,
-                                "schedule": data.schedule,
-                                "estado":data.estado,
+                                "id": appoiment.$attributes.id,
+                                "user_id": appoiment.$attributes.user_id,
+                                "consulting_room_id": appoiment.$attributes.consulting_room_id,
+                                "motive": appoiment.$attributes.motive,
+                                "date": appoiment.$attributes.date,
+                                "schedule": appoiment.$attributes.schedule,
+                                "estado":appoiment.$attributes.estado,
+                            },
+                            "diet":null
+
+                        });
+                    } else if (diet && appoiment === null) {
+                        user.push({
+                            "id":res.id,
+                            "username": res.username,
+                            "name": res.name,
+                            "lastname": res.lastname,
+                            "phone": res.phone,
+                            "email": res.email,
+                            "address": res.address,
+                            "nss": res.nss,
+                            "rfc": res.rfc,
+                            "appoimentArray":null,
+                            "diet":{        
+                                "id": diet.id,
+                                "user_id": diet.user_id,
+                               "disease": diet.disease,
+                               "weight":diet.weight,
+                               "size": diet.size,
+                               "age": diet.age,
+                               "allergy": diet.allergy,
+                               "calories": diet.calories,
+                               "typeDiet": diet.typeDiet,
+                               "imc": diet.imc,
+                               "stateWeight":diet.stateWeight,
+                               "gender": diet.gender,
+                               "date": JSON.parse(diet.date),
+                               "weekOne":JSON.parse(diet.weekOne),
+                               "weekTwo":JSON.parse(diet.weekTwo),
+                               "weekThree":JSON.parse(diet.weekThree),
+                               "weekFour":JSON.parse(diet.weekFour)
+                           }
+
+                        });
+                    }else{
+
+                        user.push({
+                            "id":res.id,
+                            "username": res.username,
+                            "name": res.name,
+                            "lastname": res.lastname,
+                            "phone": res.phone,
+                            "email": res.email,
+                            "address": res.address,
+                            "nss": res.nss,
+                            "rfc": res.rfc,
+                            "appoimentArray":{
+                                "id": appoiment.$attributes.id,
+                                "user_id": appoiment.$attributes.user_id,
+                                "consulting_room_id": appoiment.$attributes.consulting_room_id,
+                                "motive": appoiment.$attributes.motive,
+                                "date": appoiment.$attributes.date,
+                                "schedule": appoiment.$attributes.schedule,
+                                "estado":appoiment.$attributes.estado,
                             },
                             "diet":{        
                              "id": diet.id,
@@ -447,10 +501,7 @@ class UserController {
                         }
 
                         })
-    
                     }
-                }
-                }
                 
                 return response.status(200).json({users: user});
     
