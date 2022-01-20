@@ -47,6 +47,8 @@ Route.post('dietCreate','DietController.store')
 Route.put('dietUpdate/:id','DietController.update')
 Route.delete('dietDel/:id','DietController.delete')
 
+
+
 Route.get('AppoinmnetList','AppoinmnetController.index')
 Route.get('AppoinmnetListComplete','AppoinmnetController.complete')
 Route.get('AppoinmnetListHistory','AppoinmnetController.history')
@@ -56,6 +58,7 @@ Route.post('AppoinmnetCreate','AppoinmnetController.store')
 Route.put('AppoinmnetUpdate/:id','AppoinmnetController.update')
 Route.delete('AppoinmnetDel/:id','AppoinmnetController.delete')
 Route.put('stateAppiment/:id','AppoinmnetController.stateAppiment')
+Route.get('dietListState','AppoinmnetController.listDietState')
 
 Route.get('listTemplate','PreListDietController.index');
 

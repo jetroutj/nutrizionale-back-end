@@ -15,7 +15,7 @@ class AppoinmnetController {
              if (jwt.$attributes.role_id === 1) {
                 for (const i of array) {
                     const user = await i.hasUser().fetch();
-                    if (i) {
+                    if (i && user.estado === 'activo') {
                         const data = i.$attributes;
                         users.push({
                             "id": data.id,
@@ -25,12 +25,30 @@ class AppoinmnetController {
                             "date": data.date,
                             "schedule": data.schedule,
                             "estado":data.estado,
-                            user
+                            "user":{
+                                "id": user.id,
+                                "status_user_id": user.status_user_id,
+                                "role_id": user.role_id,
+                                "diet_id": user.diet_id,
+                                "appoiment_id": user.appoiment_id,
+                                "consulting_room_id": user.consulting_room_id,
+                                "name": user.name,
+                                "email": user.email,
+                                "lastname": user.lastname,
+                                "username": user.username,
+                                "phone": user.phone,
+                                "address": user.address,
+                                "estado": user.estado
+                            }
+
                         })
                     }
                 }
-                return response.status(200).json({ success: true,appoiments:users, message: `Lista de usuarios`, code: 200 });
 
+                        return response.status(200).json({ success: true,appoiments:users, message: `Lista de usuarios`, code: 200 });
+    
+
+     
              }else{
                 return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
              }
@@ -248,7 +266,7 @@ class AppoinmnetController {
                 // console.log(userID);
                 for (const i of array) {
                     const user = await i.hasUser().fetch();
-                    if (i.$attributes.estado === 'disponible') {
+                    if (i.$attributes.estado === 'disponible' && user.estado === 'activo') {
                         const data = i.$attributes;
                         users.push({
                             "id": data.id,
@@ -275,8 +293,6 @@ class AppoinmnetController {
             // return response.status(500).json({ success: false, result: error, message: `Algo ocurrio`, code: 500 });
         }
     }
-
-
     async delete ({ params, auth, response}){
         try {
             const jwt = await auth.getUser()
@@ -320,6 +336,24 @@ class AppoinmnetController {
             }else{
                return response.status(401).json({ success: false, message: `No tienes los permisos para realizar esta accion`, code: 401 });
             }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async listDietState({auth,response}){
+        try {
+            const jwt = await auth.getUser();
+            let rows = await Appoinmnet.all();
+            const array = rows.rows
+            // console.log(array);
+            if (jwt.$attributes.role_id === 2) {
+
+            const res = array.filter( data => data.user_id === jwt.$attributes.id && data.estado === 'disponible' && jwt.$attributes.estado === 'activo');
+            return response.status(200).json({ success: true,appoiments:res, res: `Lista de usuarios`, code: 200 });
+
+
+            }
+            
         } catch (error) {
             console.log(error);
         }
