@@ -168,6 +168,8 @@ class AppoinmnetController {
 
             if (jwt.$attributes.role_id === 1 || jwt.$attributes.role_id === 2) {
                 appoiment.estado = estado
+
+                // Probando cambios en git
        
                 await appoiment.save()
                 response.status(201).json({ success: true, result: appoiment, message: `Estado actualizado correctamente`, code: 201 });
