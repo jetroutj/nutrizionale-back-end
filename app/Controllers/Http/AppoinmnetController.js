@@ -123,7 +123,7 @@ class AppoinmnetController {
     
 
             }else{
-                console.log('Algo paso');
+                return response.status(401).json({ success: false,message: `No cuentas con los permisos necesarios`, code: 401 });
             }
 
 } catch (error) {
@@ -154,20 +154,23 @@ class AppoinmnetController {
          console.log(error);   
         }
     }
-    async stateAppiment ({request, params, auth, response}){
+    async stateAppoment ({request, params, auth, response}){
         try {
+        
             const appoiment = await Appoinmnet.findOrFail(params.id)
+            console.log(appoiment.estado);
             const jwt = await auth.getUser();
 
             const {
          estado
             } = request.all();
+            console.log(estado);
 
-            if (jwt.$attributes.role_id === 1) {
+            if (jwt.$attributes.role_id === 1 || jwt.$attributes.role_id === 2) {
                 appoiment.estado = estado
        
                 await appoiment.save()
-                return response.status(201).json({ success: true, result: appoiment, message: `Estado actualizado correctamente`, code: 201 });
+                response.status(201).json({ success: true, result: appoiment, message: `Estado actualizado correctamente`, code: 201 });
 
             }
         } catch (error) {
@@ -296,7 +299,7 @@ class AppoinmnetController {
     async delete ({ params, auth, response}){
         try {
             const jwt = await auth.getUser()
-            if (jwt.$attributes.role_id === 1) {
+                if (jwt.$attributes.role_id === 1 || jwt.$attributes.role_id === 2) {
                 const appoiment = await Appoinmnet.findOrFail(params.id)
                 await appoiment.delete();
                 return response.status(200).json({ success: true, message: 'Cita eliminada correctamente', code: 200 });

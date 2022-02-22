@@ -41,6 +41,12 @@ Route.put('productUpdate/:id','ProductController.update')
 Route.put('updateToggle/:id','ProductController.updateToggle')
 Route.delete('productDel/:id','ProductController.delete')
 
+Route.post('apartarProd','ProductpaymentController.store')
+Route.get('getProductsApart','ProductpaymentController.index')
+Route.put('updateproductQuantity/:id','ProductpaymentController.update')
+
+
+
 Route.get('dietList','DietController.index')
 Route.get('dietUserId/:id','DietController.dietUserId')
 Route.post('dietCreate','DietController.store')
@@ -57,7 +63,7 @@ Route.get('AppoinmnetId/:id','AppoinmnetController.appoinmnetId');
 Route.post('AppoinmnetCreate','AppoinmnetController.store')
 Route.put('AppoinmnetUpdate/:id','AppoinmnetController.update')
 Route.delete('AppoinmnetDel/:id','AppoinmnetController.delete')
-Route.put('stateAppiment/:id','AppoinmnetController.stateAppiment')
+Route.put('stateAppoment/:id','AppoinmnetController.stateAppoment')
 Route.get('dietListState','AppoinmnetController.listDietState')
 
 Route.get('listTemplate','PreListDietController.index');
