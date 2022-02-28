@@ -9,18 +9,78 @@ class ProductpaymentController {
             const jwt = await auth.getUser();
             const rows = await Productpay.all();
             const array = rows.rows
-            console.log(jwt.$attributes.id );
-            if (jwt.$attributes.id > 1) {
-                const misApart = array.filter(res => res.userId === jwt.$attributes.id )
-                for (const i of misApart) {
-                    const prt = i.hasProduct().fetch()
-                    console.log(prt);
+            const listMyAparment = []
+            if (jwt.$attributes.role_id === 2) {
+                const misApart = array.filter(res => res.userId === jwt.$attributes.id && res.estado === 'apartado')
+                if(!misApart){
+                    response.status(201).json({ success: false, message: `Lo sentimos aun no tienes productos apartados`, code: 201 })
+                }else{   
+                    for (const i of misApart) {
+                    const prt = await i.hasProduct().fetch()
+                    const productRelation = prt.rows
+                    for (const e of productRelation) {
+                        listMyAparment.push({
+                            "id": i.id,
+                            "userId": i.userId,
+                            "productId": i.productId,
+                            "cantidad": i.cantidad,
+                            "estado": i.estado,
+                            "product": {
+                                "id": e.id,
+                                "consulting_room_id": e.consulting_room_id,
+                                "name": e.name,
+                                "price": e.price,
+                                "serialNumber": e.serialNumber,
+                                "quantity": e.quantity,
+                                "estado": e.estado,
+                                "imagen": e.imagen
+                            } 
+                        })
+                    }
+      
                 }
           
-                return response.status(201).json({ success: true,misApart, message: `Producto creado correctamente`, code: 201 });
+                return response.status(200).json({ success: true,listMyAparment, message: `Solicitud correcta`, code: 200 })}
 
             } else {
-                return response.status(201).json({ success: true,array, message: `Producto creado correctamente`, code: 201 });
+                const rows = await Productpay.all();
+                const array = rows.rows
+                const listProduct = []
+                
+                for (const i of array) {
+                    const prt = await i.hasProduct().fetch()
+                    const userhs = await i.hasUser().fetch()
+                    const productRelation = prt.rows
+                    const userRelations = userhs.rows
+                    for (const e of productRelation) {
+                        for (const usr of userRelations) {
+                            listProduct.push({
+                                "id": i.id,
+                                "userId": i.userId,
+                                "productId": i.productId,
+                                "cantidad": i.cantidad,
+                                "estado": i.estado,
+                                "product": {
+                                    "id": e.id,
+                                    "consulting_room_id": e.consulting_room_id,
+                                    "name": e.name,
+                                    "price": e.price,
+                                    "serialNumber": e.serialNumber,
+                                    "quantity": e.quantity,
+                                    "estado": e.estado,
+                                    "imagen": e.imagen
+                                },
+                                usr
+                            })
+                        }
+                   
+                    }
+
+                }
+              
+
+                return response.status(200).json({ success: true,listProduct, message: `Solicitud correcta`, code: 200 })
+
             }
            
 

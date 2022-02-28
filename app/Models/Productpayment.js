@@ -6,7 +6,10 @@ const Model = use('Model')
 class Productpayment extends Model {
   
       hasProduct(){
-        return this.belongsToMany('App/Models/Product','productId', 'id')
+        return this.hasMany('App/Models/Product','productId', 'id')
+      }
+      hasUser(){
+        return this.hasMany('App/Models/User','userId', 'id')
       }
 }
 
