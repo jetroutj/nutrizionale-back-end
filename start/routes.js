@@ -45,7 +45,7 @@ Route.post('apartarProd','ProductpaymentController.store')
 Route.get('getProductsApart','ProductpaymentController.index')
 Route.put('updateproductQuantity/:id','ProductpaymentController.update')
 
-
+Route.post('sendMailer','SendmailController.store')
 
 Route.get('dietList','DietController.index')
 Route.get('dietUserId/:id','DietController.dietUserId')

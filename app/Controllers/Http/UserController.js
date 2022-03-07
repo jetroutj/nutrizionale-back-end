@@ -142,10 +142,15 @@ class UserController {
         }
     }
     async login({ request, auth, response }) {
-
+        const rows = await User.all();
+        const array = rows.rows
         const { email, password } = request.all();
 
+        // const findUser = array?.find((res) => email === res.email)
+        // console.log(findUser);
+
         const token = await auth.attempt(email, password);
+        console.log(auth);
         return response.status(200).json({ success: true, result: token, message: `Has iniciado sesion correctamente`, code: 200 });
 
 
