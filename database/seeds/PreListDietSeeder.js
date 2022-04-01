@@ -22,62 +22,62 @@ class PreListDietSeeder {
         weekOne: JSON.stringify(
           {
             monday: {
-              breakfast: "buebito a la mexicana",
+              breakfast: "huevos rvueltos con jamón y peregil.",
               interOne: "1 Manzana",
-              lunch: "3 Tacos de asada",
+              lunch: "Ensalada de Pollo con piminetos.",
               interTwo: "2 platanos",
-              dinner: "Chuleta con verduras al vapor",
+              dinner: "Torilla con aguacate con champíñones.",
             },
             tuesday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Queso fresco y pavo.",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Carne de becerro con espinacas.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Ensalada de salmón con espinacas."
             },
             wednesday: {
-              breakfast: "Chuleta con ensalada",
+              breakfast: "Dos huevos duros con atún.",
               interOne: "1 pera y 1 manzana",
-              lunch: "pechuga de pollo",
+              lunch: "Espaguetis de calabacín.",
               interTwo: "1 pera y 1 manzana",
-              dinner: "1 sandwich"
+              dinner: "Ensalada de aguacate con aceite de oliva."
             },
             thuesday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Queso fresco y un loche de jamón iberíco.",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Carne de cerdo con brócoli.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Revuelto de huevos con queso y tocino."
             },
             friday: {
-              breakfast: "Chuleta con ensalada",
+              breakfast: "Sardinas con limón.",
               interOne: "1 pera y 1 manzana",
-              lunch: "pechuga de pollo",
+              lunch: "Mejillonnes con pimientos y cebolla y un chorro limón.",
               interTwo: "1 pera y 1 manzana",
-              dinner: "1 sandwich"
+              dinner: "Pollo con espinacas y zanahoria."
             },
             saturday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Huevos revueltos.",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Carne de ternera con salsa de boletus.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Carne de ternera con salsa de boletus."
             },
             sunday: {
-              breakfast: "libre",
+              breakfast: "Torilla con pavo.",
               interOne: "libre",
-              lunch: "libre",
+              lunch: "Pescado a la parrilla con verduras.",
               interTwo: "libre",
-              dinner: "libre"
+              dinner: "Ensalada de lechuga, espinacas y rúcula."
             },
             routine: {
-              monday: "2 kilometros trtando",
-              tuesday:"1000 lagartijas",
-              wednesday:"500 sentadillas",
-              thuesday:"200 abdominales",
-              friday:"2 horas de natación",
-              saturday:"1 hora de caminata",
-              sunday:"descanso"
+              monday: "Cardio: caminando o trotando por 2 kilometros.",
+              tuesday:"Levantamiento de pesas: Durante poco tiempo pero algo de peso.",
+              wednesday:"Estiramiento de musculos: Realizar estiramiento durante 10 a 20 minutos.",
+              thuesday:"20 flexiones, 20 sentadillas, 20 dominadas",
+              friday:"Cardio: caminando o trotando por 2 kilometros.",
+              saturday:"Estiramiento de musculos: Realizar estiramiento durante 10 a 20 minutos.",
+              sunday:"Dia libre."
             }
           }),
         weekTwo: JSON.stringify(
@@ -132,13 +132,13 @@ class PreListDietSeeder {
               dinner: "libre"
             },
             routine: {
-              monday: "2 kilometros trtando",
-              tuesday:"1000 lagartijas",
-              wednesday:"500 sentadillas",
-              thuesday:"200 abdominales",
-              friday:"2 horas de natación",
-              saturday:"1 hora de caminata",
-              sunday:"descanso"
+              monday: "Cardio: caminando o trotando por 2 kilometros.",
+              tuesday:"Levantamiento de pesas: Durante poco tiempo pero algo de peso.",
+              wednesday:"Estiramiento de musculos: Realizar estiramiento durante 10 a 20 minutos.",
+              thuesday:"20 flexiones, 20 sentadillas, 20 dominadas",
+              friday:"Cardio: caminando o trotando por 2 kilometros.",
+              saturday:"Estiramiento de musculos: Realizar estiramiento durante 10 a 20 minutos.",
+              sunday:"Dia libre."
             }
           }),
         weekThree: JSON.stringify(
@@ -193,13 +193,13 @@ class PreListDietSeeder {
               dinner: "libre"
             },
             routine: {
-              monday: "2 kilometros trtando",
-              tuesday:"1000 lagartijas",
-              wednesday:"500 sentadillas",
-              thuesday:"200 abdominales",
-              friday:"2 horas de natación",
-              saturday:"1 hora de caminata",
-              sunday:"descanso"
+              monday: "Cardio: caminando o trotando por 2 kilometros.",
+              tuesday:"Levantamiento de pesas: Durante poco tiempo pero algo de peso.",
+              wednesday:"Estiramiento de musculos: Realizar estiramiento durante 10 a 20 minutos.",
+              thuesday:"20 flexiones, 20 sentadillas, 20 dominadas",
+              friday:"Cardio: caminando o trotando por 2 kilometros.",
+              saturday:"Estiramiento de musculos: Realizar estiramiento durante 10 a 20 minutos.",
+              sunday:"Dia libre."
             }
           }),
         weekFour:JSON.stringify(
@@ -254,13 +254,13 @@ class PreListDietSeeder {
               dinner: "libre"
             },
             routine: {
-              monday: "2 kilometros trtando",
-              tuesday:"1000 lagartijas",
-              wednesday:"500 sentadillas",
-              thuesday:"200 abdominales",
-              friday:"2 horas de natación",
-              saturday:"1 hora de caminata",
-              sunday:"descanso"
+              monday: "Cardio: caminando o trotando por 2 kilometros.",
+              tuesday:"Levantamiento de pesas: Durante poco tiempo pero algo de peso.",
+              wednesday:"Estiramiento de musculos: Realizar estiramiento durante 10 a 20 minutos.",
+              thuesday:"20 flexiones, 20 sentadillas, 20 dominadas",
+              friday:"Cardio: caminando o trotando por 2 kilometros.",
+              saturday:"Estiramiento de musculos: Realizar estiramiento durante 10 a 20 minutos.",
+              sunday:"Dia libre."
             }
           }),
       },
