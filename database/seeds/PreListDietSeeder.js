@@ -22,11 +22,11 @@ class PreListDietSeeder {
         weekOne: JSON.stringify(
           {
             monday: {
-              breakfast: "huevos rvueltos con jamón y peregil.",
+              breakfast: "Huevos revueltos con jamón y peregil.",
               interOne: "1 Manzana",
               lunch: "Ensalada de Pollo con piminetos.",
               interTwo: "2 platanos",
-              dinner: "Torilla con aguacate con champíñones.",
+              dinner: "Torilla con aguacate con champíñones."
             },
             tuesday: {
               breakfast: "Queso fresco y pavo.",
@@ -83,53 +83,53 @@ class PreListDietSeeder {
         weekTwo: JSON.stringify(
           {
             monday: {
-              breakfast: "buebito a la mexicana",
+              breakfast: "Huevos fritos con 2 rebanas de queso.",
               interOne: "1 Manzana",
-              lunch: "3 Tacos de asada",
+              lunch: "Pollo asado con 1-2 tazas de verduras.",
               interTwo: "2 platanos",
-              dinner: "Chuleta con verduras al vapor",
+              dinner: "Carne asada con 1-2 tazas de verduras."
             },
             tuesday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Omelet con espinacas y aguacate.",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Chuleta de cerdo con ensalada verde.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Fajitas de Pollo y Res con cebolla, pimientos y aguacate."
             },
             wednesday: {
-              breakfast: "Chuleta con ensalada",
+              breakfast: "Huevos revueltos con jamón.",
               interOne: "1 pera y 1 manzana",
-              lunch: "pechuga de pollo",
+              lunch: "Hambuergesas de carne molida con queso, tomate, lechuga SIN PAN.",
               interTwo: "1 pera y 1 manzana",
-              dinner: "1 sandwich"
+              dinner: "Chuleta de cerdo con ensalda verde."
             },
             thuesday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Crepas Keto (Video de Youtube).",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Salmon o Tilapia con verduras verduras.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Pollo asado con ensalada 1-2 tazas de verduras."
             },
             friday: {
-              breakfast: "Chuleta con ensalada",
+              breakfast: "Omelet con champiñones y queso.",
               interOne: "1 pera y 1 manzana",
-              lunch: "pechuga de pollo",
+              lunch: "Lasagna de Zichini y carne molida.",
               interTwo: "1 pera y 1 manzana",
-              dinner: "1 sandwich"
+              dinner: "Pollo Gordon Blue con Coliarroz. (Video de Youtube)"
             },
             saturday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Huevos revueltos con jamón.",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Alitas con palitos de apio o ensalada.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Lasagna de Zichini y carne molida."
             },
             sunday: {
-              breakfast: "libre",
+              breakfast: "Huevos fritos con 2 rebanadas de queso.",
               interOne: "libre",
-              lunch: "libre",
+              lunch: "Mariscos con verduras verduras.",
               interTwo: "libre",
-              dinner: "libre"
+              dinner: "Pollo enchipotlado con coliarroz."
             },
             routine: {
               monday: "Cardio: caminando o trotando por 2 kilometros.",
@@ -144,53 +144,53 @@ class PreListDietSeeder {
         weekThree: JSON.stringify(
           {
             monday: {
-              breakfast: "buebito a la mexicana",
+              breakfast: "huevos rvueltos con jamón y peregil.",
               interOne: "1 Manzana",
-              lunch: "3 Tacos de asada",
+              lunch: "Ensalada de Pollo con piminetos.",
               interTwo: "2 platanos",
-              dinner: "Chuleta con verduras al vapor",
+              dinner: "Torilla con aguacate con champíñones."
             },
             tuesday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Queso fresco y pavo.",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Carne de becerro con espinacas.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Ensalada de salmón con espinacas."
             },
             wednesday: {
-              breakfast: "Chuleta con ensalada",
+              breakfast: "Dos huevos duros con atún.",
               interOne: "1 pera y 1 manzana",
-              lunch: "pechuga de pollo",
+              lunch: "Espaguetis de calabacín.",
               interTwo: "1 pera y 1 manzana",
-              dinner: "1 sandwich"
+              dinner: "Ensalada de aguacate con aceite de oliva."
             },
             thuesday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Queso fresco y un loche de jamón iberíco.",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Carne de cerdo con brócoli.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Revuelto de huevos con queso y tocino."
             },
             friday: {
-              breakfast: "Chuleta con ensalada",
+              breakfast: "Sardinas con limón.",
               interOne: "1 pera y 1 manzana",
-              lunch: "pechuga de pollo",
+              lunch: "Mejillonnes con pimientos y cebolla y un chorro limón.",
               interTwo: "1 pera y 1 manzana",
-              dinner: "1 sandwich"
+              dinner: "Pollo con espinacas y zanahoria."
             },
             saturday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Huevos revueltos.",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Carne de ternera con salsa de boletus.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Carne de ternera con salsa de boletus."
             },
             sunday: {
-              breakfast: "libre",
+              breakfast: "Torilla con pavo.",
               interOne: "libre",
-              lunch: "libre",
+              lunch: "Pescado a la parrilla con verduras.",
               interTwo: "libre",
-              dinner: "libre"
+              dinner: "Ensalada de lechuga, espinacas y rúcula."
             },
             routine: {
               monday: "Cardio: caminando o trotando por 2 kilometros.",
@@ -205,53 +205,53 @@ class PreListDietSeeder {
         weekFour:JSON.stringify(
           {
             monday: {
-              breakfast: "buebito a la mexicana",
+              breakfast: "Huevos fritos con 2 rebanas de queso.",
               interOne: "1 Manzana",
-              lunch: "3 Tacos de asada",
+              lunch: "Pollo asado con 1-2 tazas de verduras.",
               interTwo: "2 platanos",
-              dinner: "Chuleta con verduras al vapor",
+              dinner: "Carne asada con 1-2 tazas de verduras."
             },
             tuesday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Omelet con espinacas y aguacate.",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Chuleta de cerdo con ensalada verde.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Fajitas de Pollo y Res con cebolla, pimientos y aguacate."
             },
             wednesday: {
-              breakfast: "Chuleta con ensalada",
+              breakfast: "Huevos revueltos con jamón.",
               interOne: "1 pera y 1 manzana",
-              lunch: "pechuga de pollo",
+              lunch: "Hambuergesas de carne molida con queso, tomate, lechuga SIN PAN.",
               interTwo: "1 pera y 1 manzana",
-              dinner: "1 sandwich"
+              dinner: "Chuleta de cerdo con ensalda verde."
             },
             thuesday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Crepas Keto (Video de Youtube).",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Salmon o Tilapia con verduras verduras.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Pollo asado con ensalada 1-2 tazas de verduras."
             },
             friday: {
-              breakfast: "Chuleta con ensalada",
+              breakfast: "Omelet con champiñones y queso.",
               interOne: "1 pera y 1 manzana",
-              lunch: "pechuga de pollo",
+              lunch: "Lasagna de Zichini y carne molida.",
               interTwo: "1 pera y 1 manzana",
-              dinner: "1 sandwich"
+              dinner: "Pollo Gordon Blue con Coliarroz. (Video de Youtube)"
             },
             saturday: {
-              breakfast: "buebito con jamón",
+              breakfast: "Huevos revueltos con jamón.",
               interOne: "2 peras",
-              lunch: "Filete de res, con panela y verduras",
+              lunch: "Alitas con palitos de apio o ensalada.",
               interTwo: "2 peras",
-              dinner: "Chuleta con verduras al vapor"
+              dinner: "Lasagna de Zichini y carne molida."
             },
             sunday: {
-              breakfast: "libre",
+              breakfast: "Huevos fritos con 2 rebanadas de queso.",
               interOne: "libre",
-              lunch: "libre",
+              lunch: "Mariscos con verduras verduras.",
               interTwo: "libre",
-              dinner: "libre"
+              dinner: "Pollo enchipotlado con coliarroz."
             },
             routine: {
               monday: "Cardio: caminando o trotando por 2 kilometros.",
