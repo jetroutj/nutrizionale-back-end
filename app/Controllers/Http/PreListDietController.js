@@ -12,12 +12,12 @@ class PreListDietController {
 
             for (const data of array) {
                 diets.push({
-                    "id":data.id,
-                    "name":data.name,
-                    "weekOne": JSON.parse(data.weekOne),
-                    "weekTwo": JSON.parse(data.weekTwo),
-                    "weekThree": JSON.parse(data.weekThree) ,
-                    "weekFour": JSON.parse(data.weekFour),
+                    "id":data?.id,
+                    "name":data?.name,
+                    "weekOne": JSON.parse(data?.weekOne),
+                    "weekTwo": JSON.parse(data?.weekTwo),
+                    "weekThree": JSON.parse(data?.weekThree) ,
+                    "weekFour": JSON.parse(data?.weekFour),
                 })
             }
 

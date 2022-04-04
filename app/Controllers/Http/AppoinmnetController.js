@@ -15,30 +15,30 @@ class AppoinmnetController {
              if (jwt.$attributes.role_id === 1) {
                 for (const i of array) {
                     const user = await i.hasUser().fetch();
-                    if (i && user.estado === 'activo') {
+                    if (i && user?.estado === 'activo') {
                         const data = i.$attributes;
                         users.push({
-                            "id": data.id,
-                            "user_id": data.user_id,
-                            "consulting_room_id": data.consulting_room_id,
-                            "motive": data.motive,
-                            "date": data.date,
-                            "schedule": data.schedule,
-                            "estado":data.estado,
+                            "id": data?.id,
+                            "user_id": data?.user_id,
+                            "consulting_room_id": data?.consulting_room_id,
+                            "motive": data?.motive,
+                            "date": data?.date,
+                            "schedule": data?.schedule,
+                            "estado":data?.estado,
                             "user":{
-                                "id": user.id,
-                                "status_user_id": user.status_user_id,
-                                "role_id": user.role_id,
-                                "diet_id": user.diet_id,
-                                "appoiment_id": user.appoiment_id,
-                                "consulting_room_id": user.consulting_room_id,
-                                "name": user.name,
-                                "email": user.email,
-                                "lastname": user.lastname,
-                                "username": user.username,
-                                "phone": user.phone,
-                                "address": user.address,
-                                "estado": user.estado
+                                "id": user?.id,
+                                "status_user_id": user?.status_user_id,
+                                "role_id": user?.role_id,
+                                "diet_id": user?.diet_id,
+                                "appoiment_id": user?.appoiment_id,
+                                "consulting_room_id": user?.consulting_room_id,
+                                "name": user?.name,
+                                "email": user?.email,
+                                "lastname": user?.lastname,
+                                "username": user?.username,
+                                "phone": user?.phone,
+                                "address": user?.address,
+                                "estado": user?.estado
                             }
 
                         })
@@ -70,13 +70,13 @@ class AppoinmnetController {
             
                 const data = i.$attributes;
                 users.push({
-                    "id": data.id,
-                    "user_id": data.user_id,
-                    "consulting_room_id": data.consulting_room_id,
-                    "motive": data.motive,
-                    "date": data.date,
-                    "schedule": data.schedule,
-                    "estado":data.estado
+                    "id": data?.id,
+                    "user_id": data?.user_id,
+                    "consulting_room_id": data?.consulting_room_id,
+                    "motive": data?.motive,
+                    "date": data?.date,
+                    "schedule": data?.schedule,
+                    "estado":data?.estado
                 })
             }
             const {
@@ -196,13 +196,13 @@ class AppoinmnetController {
                     if (i.$attributes.estado === 'completada') {
                         const data = i.$attributes;
                         users.push({
-                            "id": data.id,
-                            "user_id": data.user_id,
-                            "consulting_room_id": data.consulting_room_id,
-                            "motive": data.motive,
-                            "date": data.date,
-                            "schedule": data.schedule,
-                            "estado":data.estado,
+                            "id": data?.id,
+                            "user_id": data?.user_id,
+                            "consulting_room_id": data?.consulting_room_id,
+                            "motive": data?.motive,
+                            "date": data?.date,
+                            "schedule": data?.schedule,
+                            "estado":data?.estado,
                             user
                         })
                     }
@@ -235,13 +235,13 @@ class AppoinmnetController {
                     if (i.$attributes.estado !== 'disponible') {
                         const data = i.$attributes;
                         users.push({
-                            "id": data.id,
-                            "user_id": data.user_id,
-                            "consulting_room_id": data.consulting_room_id,
-                            "motive": data.motive,
-                            "date": data.date,
-                            "schedule": data.schedule,
-                            "estado":data.estado,
+                            "id": data?.id,
+                            "user_id": data?.user_id,
+                            "consulting_room_id": data?.consulting_room_id,
+                            "motive": data?.motive,
+                            "date": data?.date,
+                            "schedule": data?.schedule,
+                            "estado":data?.estado,
                             user
                         })
                     }
@@ -271,16 +271,16 @@ class AppoinmnetController {
                 // console.log(userID);
                 for (const i of array) {
                     const user = await i.hasUser().fetch();
-                    if (i.$attributes.estado === 'disponible' && user.estado === 'activo') {
+                    if (i.$attributes.estado === 'disponible' && user?.estado === 'activo') {
                         const data = i.$attributes;
                         users.push({
-                            "id": data.id,
-                            "user_id": data.user_id,
-                            "consulting_room_id": data.consulting_room_id,
-                            "motive": data.motive,
-                            "date": data.date,
-                            "schedule": data.schedule,
-                            "estado":data.estado,
+                            "id": data?.id,
+                            "user_id": data?.user_id,
+                            "consulting_room_id": data?.consulting_room_id,
+                            "motive": data?.motive,
+                            "date": data?.date,
+                            "schedule": data?.schedule,
+                            "estado":data?.estado,
                             user
                         })
                     
@@ -326,12 +326,12 @@ class AppoinmnetController {
                    if (i) {
                        const data = i.$attributes;
                        users.push({
-                           "id": data.id,
-                           "user_id": data.user_id,
-                           "consulting_room_id": data.consulting_room_id,
-                           "motive": data.motive,
-                           "date": data.date,
-                           "schedule": data.schedule,
+                           "id": data?.id,
+                           "user_id": data?.user_id,
+                           "consulting_room_id": data?.consulting_room_id,
+                           "motive": data?.motive,
+                           "date": data?.date,
+                           "schedule": data?.schedule,
                            user
                        })
                    }
@@ -353,7 +353,7 @@ class AppoinmnetController {
             // console.log(array);
             if (jwt.$attributes.role_id === 2) {
 
-            const res = array.filter( data => data.user_id === jwt.$attributes.id && data.estado === 'disponible' && jwt.$attributes.estado === 'activo');
+            const res = array.filter( data => data?.user_id === jwt.$attributes.id && data?.estado === 'disponible' && jwt.$attributes?.estado === 'activo');
             return response.status(200).json({ success: true,appoiments:res, res: `Lista de usuarios`, code: 200 });
 
 
