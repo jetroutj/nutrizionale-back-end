@@ -28,15 +28,15 @@ class ProductpaymentController {
                     response.status(201).json({ success: false, message: `Lo sentimos aun no tienes productos apartados`, code: 201 })
                 }else{   
                     for (const i of misApart) {
-                    const prt = await i.hasProduct().fetch()
+                    const prt = await i?.hasProduct().fetch()
                     const productRelation = prt.rows
                     for (const e of productRelation) {
                         listMyAparment.push({
-                            "id": i.id,
-                            "userId": i.userId,
-                            "productId": i.productId,
-                            "cantidad": i.cantidad,
-                            "estado": i.estado,
+                            "id": i?.id,
+                            "userId": i?.userId,
+                            "productId": i?.productId,
+                            "cantidad": i?.cantidad,
+                            "estado": i?.estado,
                             "product": {
                                 "id": e.id,
                                 "consulting_room_id": e.consulting_room_id,
@@ -60,18 +60,18 @@ class ProductpaymentController {
                 const listProduct = []
                 
                 for (const i of array) {
-                    const prt = await i.hasProduct().fetch()
-                    const userhs = await i.hasUser().fetch()
+                    const prt = await i?.hasProduct().fetch()
+                    const userhs = await i?.hasUser().fetch()
                     const productRelation = prt.rows
                     const userRelations = userhs.rows
                     for (const e of productRelation) {
                         for (const usr of userRelations) {
                             listProduct.push({
-                                "id": i.id,
-                                "userId": i.userId,
-                                "productId": i.productId,
-                                "cantidad": i.cantidad,
-                                "estado": i.estado,
+                                "id": i?.id,
+                                "userId": i?.userId,
+                                "productId": i?.productId,
+                                "cantidad": i?.cantidad,
+                                "estado": i?.estado,
                                 "product": {
                                     "id": e.id,
                                     "consulting_room_id": e.consulting_room_id,
@@ -116,7 +116,7 @@ class ProductpaymentController {
             const userID = jwt.$attributes.id
             for (const i of sumatory) {
                 
-                if (cantidad > i.quantity ) {
+                if (cantidad > i?.quantity ) {
                     response.status(400).json({succes:false,message:'no hay suficientes productos'})
                 }else{
                     productpay.userID = userID
@@ -173,9 +173,9 @@ class ProductpaymentController {
                                                 </tr>
                                                 <tr>
                                                    
-                                                    <td><p style="font-size: medium;">${i.name}</p></td>
-                                                    <td><p style="font-size: medium;">$${i.price}</p></td>
-                                                    <td><p style="font-size: medium;">$${i.price * cantidad}</p></td>
+                                                    <td><p style="font-size: medium;">${i?.name}</p></td>
+                                                    <td><p style="font-size: medium;">$${i?.price}</p></td>
+                                                    <td><p style="font-size: medium;">$${i?.price * cantidad}</p></td>
                                                     <td><p style="font-size: medium;">${jwt.$attributes.name}</p></td>
                                                 </tr>
                                             </table>

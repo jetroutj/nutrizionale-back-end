@@ -232,7 +232,7 @@ class AppoinmnetController {
                 // console.log(userID);
                 for (const i of array) {
                     const user = await i.hasUser().fetch();
-                    if (i.$attributes.estado !== 'disponible') {
+                    if (i.$attributes?.estado !== 'disponible') {
                         const data = i.$attributes;
                         users.push({
                             "id": data?.id,
