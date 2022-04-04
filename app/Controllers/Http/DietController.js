@@ -16,7 +16,7 @@ class DietController {
              if (jwt.$attributes.role_id === 1) {
                 for (const i of array) {
                     const user = await i.hasUser().fetch();
-                    if (i && user.estado === 'activo') {
+                    if (i && user?.estado === 'activo') {
                         const data = i.$attributes;
                         console.log(data);
                         diets.push({
